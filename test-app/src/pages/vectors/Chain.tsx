@@ -18,7 +18,6 @@ export class Chain extends THREE.Group {
       this.add(link);
     }
     this.line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(new Array(length).fill(new THREE.Vector3())), new THREE.LineBasicMaterial({ color: 0xcccccc }));
-   
     this.add(this.line);
 
     this.test = new THREE.Line(new THREE.BufferGeometry().setFromPoints(new Array(2).fill(new THREE.Vector3())), new THREE.LineBasicMaterial({ color: 0xffcccc }));
@@ -30,7 +29,7 @@ export class Chain extends THREE.Group {
 
   fromTo(fromPoint: THREE.Vector3, toPoint: THREE.Vector3) {
     this.visible = true;
-    const d = this.links.length;// fromPoint.distanceTo(toPoint) * 2;
+    const d = this.links.length;
     const positions = this.line.geometry.attributes.position.array as Float32Array;
 
     this.links.forEach((link, i) => {
@@ -45,14 +44,5 @@ export class Chain extends THREE.Group {
       }
     });
     this.line.geometry.attributes.position.needsUpdate = true;
-
-    // const positions2 = this.test.geometry.attributes.position.array as Float32Array;
-    // positions2[0] = this.links[2].position.x;
-    // positions2[1] = this.links[2].position.y;
-    // positions2[2] = this.links[2].position.z;
-    // positions2[3] = this.links[3].position.x;
-    // positions2[4] = this.links[3].position.y;
-    // positions2[5] = this.links[3].position.z;
-    // this.test.geometry.attributes.position.needsUpdate = true;
   }
 }

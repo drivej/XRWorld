@@ -1,8 +1,6 @@
+import { createSphere, UserData } from '@drivej/xrworld';
 import gsap from 'gsap';
 import * as THREE from 'three';
-// import { createSphere, UserData } from '../../js/XRUtils';
-// import { Ease } from '../../utils/Ease';
-import { createSphere, UserData } from '@drivej/xrworld';
 import { Ease } from './Ease';
 import { Ligament } from './Ligament';
 

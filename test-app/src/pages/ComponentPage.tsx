@@ -19,7 +19,7 @@ function ComponentPage() {
       container.current.appendChild(world.current.vrButton);
 
       if (world.current && width && height) {
-        const w = Math.min(width, height) * 0.5;
+        const w = Math.min(width, height) * 0.8;
         world.current.setSize(w, w);
       }
       return () => {
@@ -32,7 +32,7 @@ function ComponentPage() {
   useEffect(() => {
     return () => {
       if (world.current && width && height) {
-        const w = Math.min(width, height) * 0.5;
+        const w = Math.min(width, height) * 0.8;
         world.current.setSize(w, w);
       }
     };
