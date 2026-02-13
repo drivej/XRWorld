@@ -1,0 +1,38 @@
+export declare const ThemeColors: {
+    transparent: string;
+    white: string;
+    black: string;
+    primary: string;
+    secondary: string;
+    dark: string;
+    sage_dark: string;
+    sage: string;
+    sage_light: string;
+    sage_lighter: string;
+    squash: string;
+    green: string;
+    green_lighter: string;
+    grey_light: string;
+    grey: string;
+    grey_dark: string;
+    grey_darker: string;
+    grey_darkest: string;
+    plum: string;
+    puce: string;
+    puce_dark: string;
+    pink: string;
+    purple: string;
+    red: string;
+    orange: string;
+    orange_light: string;
+    yellow: string;
+    turquiose: string;
+    turquiose_light: string;
+    lichen: string;
+    linen: string;
+    linen_dark: string;
+    linen_darker: string;
+    blue: string;
+    grey_trans: string;
+};
+//# sourceMappingURL=ThemeColors.d.ts.map
