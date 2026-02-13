@@ -8,7 +8,7 @@ export declare class XRHand {
     raycaster: THREE.Raycaster;
     controllerIndex: number;
     controller: THREE.XRHandSpace;
-    grip: THREE.XRGripSpace;
+    grip: THREE.XRGripSpace | undefined;
     isSelecting: boolean;
     tmpVector1: THREE.Vector3;
     tmpVector2: THREE.Vector3;

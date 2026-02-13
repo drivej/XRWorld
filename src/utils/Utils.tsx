@@ -1,4 +1,4 @@
-import { OS, WaveModel } from '../models/models';
+// import { OS, WaveModel } from '../models/models';
 export const inBrowser = typeof window != 'undefined';
 export const isWebkit = inBrowser && (window as unknown as Record<string, unknown>)?.webkitAudioContext ? true : false;
 
@@ -47,14 +47,14 @@ export function interleavePosts<T>(array1: (T & { id: string })[], array2: (T & 
   return result;
 }
 
-export function removeEmptyProps<T>(o: T) {
-  return Object.keys(o).reduce((q, k) => {
-    if (o[k] !== '' && o[k] !== null && o[k] !== undefined && o[k]?.length !== 0) {
-      q[k] = o[k];
-    }
-    return q;
-  }, {});
-}
+// export function removeEmptyProps<T>(o: T) {
+//   return Object.keys(o).reduce((q, k) => {
+//     if (o[k] !== '' && o[k] !== null && o[k] !== undefined && o[k]?.length !== 0) {
+//       q[k] = o[k];
+//     }
+//     return q;
+//   }, {});
+// }
 
 let __UID_INT = 0;
 
@@ -62,28 +62,28 @@ export const getUID = (): string => {
   return `u${__UID_INT++}`;
 };
 
-export const getMobileOperatingSystem = (): OS => {
-  if (!inBrowser) return OS.SERVER;
-  const userAgent = navigator.userAgent || navigator.vendor;
+// export const getMobileOperatingSystem = (): OS => {
+//   if (!inBrowser) return OS.SERVER;
+//   const userAgent = navigator.userAgent || navigator.vendor;
 
-  // Windows Phone must come first because its UA also contains "Android"
-  if (/windows phone/i.test(userAgent)) {
-    return OS.WINDOWS_PHONE;
-  }
+//   // Windows Phone must come first because its UA also contains "Android"
+//   if (/windows phone/i.test(userAgent)) {
+//     return OS.WINDOWS_PHONE;
+//   }
 
-  if (/android/i.test(userAgent)) {
-    return OS.ANDROID;
-  }
+//   if (/android/i.test(userAgent)) {
+//     return OS.ANDROID;
+//   }
 
-  // iOS detection from: http://stackoverflow.com/a/9039885/177710
-  if (/iPad|iPhone|iPod/.test(userAgent) && !(window as unknown as Record<string, unknown>).MSStream) {
-    return OS.IOS;
-  }
+//   // iOS detection from: http://stackoverflow.com/a/9039885/177710
+//   if (/iPad|iPhone|iPod/.test(userAgent) && !(window as unknown as Record<string, unknown>).MSStream) {
+//     return OS.IOS;
+//   }
 
-  return OS.UNKNOWN; //'unknown';
-};
+//   return OS.UNKNOWN; //'unknown';
+// };
 
-export function containsEncodedComponents(x) {
+export function containsEncodedComponents(x: string) {
   // ie ?,=,&,/ etc
   return decodeURI(x) !== decodeURIComponent(x);
 }
@@ -103,53 +103,53 @@ export function deorphan(str: string): string {
   }
 }
 
-export const decompressWave = (wave: WaveModel): WaveModel => {
-  if (wave?.length == null || wave.length == 0) {
-    return [];
-  }
+// export const decompressWave = (wave: WaveModel): WaveModel => {
+//   if (wave?.length == null || wave.length == 0) {
+//     return [];
+//   }
 
-  const minDInt = 4294967296;
+//   const minDInt = 4294967296;
 
-  let data = [];
-  for (let i = 0; i < wave.length; i++) {
-    const w = wave[i];
-    const b0 = w % minDInt;
-    const d0 = b0;
-    const d1 = (w - b0) / minDInt;
+//   let data = [];
+//   for (let i = 0; i < wave.length; i++) {
+//     const w = wave[i];
+//     const b0 = w % minDInt;
+//     const d0 = b0;
+//     const d1 = (w - b0) / minDInt;
 
-    for (let k = 0; k < 2; k++) {
-      const d = k == 0 ? d0 : d1;
-      // split into 10 tuples
-      for (let j = 0; j < 10; j++) {
-        const pos = j * 3;
-        const tuple = ((7 << pos) & d) >> pos;
-        const val = (tuple * 12.5) / 100;
-        data.push(val);
-      }
-    }
-  }
-  // trim trailing zeros
-  let end = data.length;
-  for (let i = data.length - 1; i >= 0; i--) {
-    if (data[i] > 0.0) {
-      end = i + 1;
-      break;
-    }
-  }
-  if (end < data.length) {
-    const trim = new Array(end);
-    for (let i = 0; i < end; i++) {
-      trim[i] = data[i];
-    }
-    data = trim;
-  }
+//     for (let k = 0; k < 2; k++) {
+//       const d = k == 0 ? d0 : d1;
+//       // split into 10 tuples
+//       for (let j = 0; j < 10; j++) {
+//         const pos = j * 3;
+//         const tuple = ((7 << pos) & d) >> pos;
+//         const val = (tuple * 12.5) / 100;
+//         data.push(val);
+//       }
+//     }
+//   }
+//   // trim trailing zeros
+//   let end = data.length;
+//   for (let i = data.length - 1; i >= 0; i--) {
+//     if (data[i] > 0.0) {
+//       end = i + 1;
+//       break;
+//     }
+//   }
+//   if (end < data.length) {
+//     const trim = new Array(end);
+//     for (let i = 0; i < end; i++) {
+//       trim[i] = data[i];
+//     }
+//     data = trim;
+//   }
 
-  return data;
-};
+//   return data;
+// };
 
 const LEAD_URL_MATCH = /^(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_+.~!#?&//=]*))/gi;
 
-export function getFirstUrl(str: string): string {
+export function getFirstUrl(str: string): string | null {
   return str?.match(LEAD_URL_MATCH)?.[0] ?? null;
 }
 

@@ -1,4 +1,3 @@
-import { OS, WaveModel } from '../models/models';
 export declare const inBrowser: boolean;
 export declare const isWebkit: boolean;
 export declare function initBrowser(): void;
@@ -8,14 +7,11 @@ export declare function interleavePosts<T>(array1: (T & {
 })[], array2: (T & {
     id: string;
 })[]): T[];
-export declare function removeEmptyProps<T>(o: T): {};
 export declare const getUID: () => string;
-export declare const getMobileOperatingSystem: () => OS;
-export declare function containsEncodedComponents(x: any): boolean;
+export declare function containsEncodedComponents(x: string): boolean;
 export declare const toBgUrl: (url: string) => string;
 export declare function deorphan(str: string): string;
-export declare const decompressWave: (wave: WaveModel) => WaveModel;
-export declare function getFirstUrl(str: string): string;
+export declare function getFirstUrl(str: string): string | null;
 export declare function stripFirstUrl(str: string): string;
 export interface Duration {
     milliseconds: number;

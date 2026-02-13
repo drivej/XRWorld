@@ -21,7 +21,7 @@ export class XRHand {
   raycaster = new THREE.Raycaster();
   controllerIndex;
   controller: THREE.XRHandSpace;
-  grip: THREE.XRGripSpace = new THREE.XRGripSpace();
+  grip: THREE.XRGripSpace | undefined;
   isSelecting = false;
   tmpVector1 = new THREE.Vector3();
   tmpVector2 = new THREE.Vector3();

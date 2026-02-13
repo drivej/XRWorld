@@ -26,7 +26,7 @@ export type XRRemoteEvent = {
   target: THREE.XRTargetRaySpace;
 };
 
-export class XRRemote<U extends Record<string, unknown> = Record<string,unknown>> {
+export class XRRemote<U extends Record<string, unknown> = Record<string, unknown>> {
   raycaster = new THREE.Raycaster();
   controller: THREE.XRTargetRaySpace;
   grip: THREE.XRGripSpace;
@@ -34,7 +34,8 @@ export class XRRemote<U extends Record<string, unknown> = Record<string,unknown>
   isBuilt = false;
   isConnected = false;
   isSelecting = false;
-  userData:U = {} as unknown as U;
+  userData: U = {} as unknown as U;
+  private eventListeners = new Map<string, Map<(event: XRRemoteEvent) => void, EventListener>>();
 
   constructor(controllerIndex: number, renderer: THREE.WebGLRenderer, scene: THREE.Scene | THREE.Object3D) {
     this.controllerIndex = controllerIndex;
@@ -82,7 +83,7 @@ export class XRRemote<U extends Record<string, unknown> = Record<string,unknown>
     }
   }
 
-  getSelectedObject(children: THREE.Object3D<THREE.Event>[], recursive = false): THREE.Intersection<THREE.Object3D<THREE.Event>> {
+  getSelectedObject(children: THREE.Object3D<THREE.Event>[], recursive = false): THREE.Intersection<THREE.Object3D<THREE.Event>> | null {
     tempMatrix.identity().extractRotation(this.controller.matrixWorld);
     this.raycaster.ray.origin.setFromMatrixPosition(this.controller.matrixWorld);
     this.raycaster.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
@@ -92,13 +93,14 @@ export class XRRemote<U extends Record<string, unknown> = Record<string,unknown>
     return passed.length > 0 ? passed[0] : null;
   }
 
+  // TODO: this won't remove the specific event
   on(eventType: XRRemoteEventType, callback: (event: XRRemoteEvent) => void): XRRemote {
     this.controller.addEventListener(eventType, (e) => callback({ ...e, ref: this }));
     return this;
   }
 
   off(eventType: XRRemoteEventType, callback: (event: XRRemoteEvent) => void): XRRemote {
-    this.controller.removeEventListener(eventType, callback);
+    this.controller.removeEventListener(eventType, (e) => callback({ ...e, ref: this }));
     return this;
   }
 
@@ -126,7 +128,7 @@ export class XRRemote<U extends Record<string, unknown> = Record<string,unknown>
     // console.log('indexTip', indexTip);
     // indexTip.add(self.buildController(event.data));
     if (this.isBuilt === false) {
-      this.controller.add(this.buildController(event.data));
+      this.controller.add(this.buildController(event.data)!);
       this.isBuilt = true;
     }
     this.controller.visible = true;

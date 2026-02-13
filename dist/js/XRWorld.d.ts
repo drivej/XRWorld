@@ -8,7 +8,6 @@ import { XRRemote } from './XRRemote';
 export declare class XRWorld {
     clock: THREE.Clock;
     scene: THREE.Scene;
-    container: HTMLDivElement;
     camera: THREE.PerspectiveCamera;
     dolly: THREE.Object3D;
     dummyCam: THREE.Object3D;
@@ -35,6 +34,7 @@ export declare class XRWorld {
     controllersInitialized: boolean;
     handsInitialized: boolean;
     private _session;
+    vrButton: HTMLElement;
     constructor();
     set gravity(val: number);
     get gravity(): number;
@@ -62,7 +62,7 @@ export declare class XRWorld {
     startAnimate(): void;
     animate(): void;
     endAnimate(): void;
-    onWindowResize(): void;
+    setSize(width: number, height: number): void;
     setSelectedObjectRight(obj: THREE.Mesh<THREE.BufferGeometry, THREE.MeshStandardMaterial>): void;
     setSelectedObjectLeft(obj: THREE.Mesh<THREE.BufferGeometry, THREE.MeshStandardMaterial>): void;
     setSelectedObjectMouse(): void;

@@ -1,24 +1,22 @@
-import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [react()],
   build: {
     target: 'esnext',
     lib: {
       entry: './src/index.ts',
-      name: 'AudioVisualizer',
+      name: 'XRWorld',
       formats: ['es'],
       fileName: 'index'
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime', 'howler', 'lodash', 'mobx'],
+      external: ['three', 'gsap'],
       output: {
         preserveModules: false,
         assetFileNames: 'assets/[name][extname]',
         globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM'
+          three: 'THREE',
+          gsap: 'gsap'
         }
       }
     },

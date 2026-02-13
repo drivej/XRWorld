@@ -1,16 +1,17 @@
-# Leaves and Snow Animation 🍂❄️
+# XRWorld 🥽
 
-A beautiful falling leaves and snow particle animation built with PixiJS, featuring atmospheric depth effects and interactive wind physics.
+A WebXR Virtual Reality library built on Three.js, providing a complete framework for creating immersive VR experiences with hand tracking, controllers, and interactive 3D environments.
 
 ## ✨ Features
 
-- 🎨 Beautiful particle animations with leaves and snowflakes
-- 🌫️ Atmospheric perspective depth effects
-- 🖱️ Interactive mouse/pointer-based wind physics
-- ⚡ High performance WebGL rendering (60fps with 200+ particles)
-- ⚛️ React component with TypeScript support
-- 📦 Zero configuration - works out of the box
-- 🎯 Fully responsive and customizable
+- 🥽 **WebXR Support** - Full VR session management with hand tracking and controllers
+- 🎮 **XR Controllers** - Built-in support for VR controllers (XRRemote)
+- 👋 **Hand Tracking** - Native hand tracking with XRHand
+- 🎨 **3D Utilities** - Helper functions for creating spheres, boxes, rooms, and more
+- 🎯 **Event System** - Comprehensive XR event management
+- 📦 **TypeScript** - Full TypeScript support with type definitions
+- ⚡ **Performance** - Optimized for smooth VR experiences
+- 🔧 **Extensible** - Easy to extend and customize
 
 ---
 
@@ -19,7 +20,7 @@ A beautiful falling leaves and snow particle animation built with PixiJS, featur
 Install directly from GitHub:
 
 ```bash
-npm install github:drivej/my-component
+npm install github:drivej/xrworld
 ```
 
 Or add to your `package.json`:
@@ -27,88 +28,191 @@ Or add to your `package.json`:
 ```json
 {
   "dependencies": {
-    "@drivej/my-component": "github:drivej/my-component"
+    "@drivej/xrworld": "github:drivej/xrworld"
   }
 }
+```
+
+**Peer Dependencies:**
+
+```bash
+npm install three@^0.148.0 gsap@^3.11.4
 ```
 
 ---
 
 ## 🚀 Quick Start
 
-### Default Import (Recommended)
+### Basic VR Scene
 
-```tsx
-import MyComponent from '@drivej/my-component';
+```typescript
+import { XRWorld, createSphere, createGridRoom } from '@drivej/xrworld';
 
-function App() {
-  return (
-    <MyComponent />
-  );
-}
+// Create XR world
+const xrWorld = new XRWorld();
+
+// Add a room
+const room = createGridRoom();
+xrWorld.scene.add(room);
+
+// Add some objects
+const sphere = createSphere({
+  radius: 0.2,
+  color: 0xff0000,
+  position: [0, 1.6, -2]
+});
+xrWorld.scene.add(sphere);
+
+// Start VR session
+document.getElementById('vr-button')?.addEventListener('click', () => {
+  xrWorld.startVRSession();
+});
 ```
 
-### Named Import
+### With React
 
 ```tsx
-import { MyComponent } from '@drivej/my-component';
+import { useEffect, useRef } from 'react';
+import { XRWorld, createGridRoom } from '@drivej/xrworld';
 
-function App() {
-  return <MyComponent />;
-}
-```
+function VRApp() {
+  const xrWorldRef = useRef<XRWorld>();
 
-### Fixed Size Container
+  useEffect(() => {
+    const xrWorld = new XRWorld();
+    xrWorldRef.current = xrWorld;
 
-```tsx
-import LeavesAndSnowReact from '@drivej/my-component';
+    // Setup scene
+    const room = createGridRoom();
+    xrWorld.scene.add(room);
 
-function App() {
+    return () => {
+      // Cleanup
+    };
+  }, []);
+
+  const handleEnterVR = () => {
+    xrWorldRef.current?.startVRSession();
+  };
+
   return (
-    <div style={{ width: '800px', height: '600px', position: 'relative' }}>
-      <MyComponent />
+    <div>
+      <button onClick={handleEnterVR}>Enter VR</button>
     </div>
   );
 }
+```
 
 ---
 
 ## 📋 API Reference
 
-### React Component Props
+### Core Classes
 
-| Prop | Type | Required | Description |
-|------|------|----------|-------------|
-| `width` | `number` | ✅ Yes | Canvas width in pixels |
-| `height` | `number` | ✅ Yes | Canvas height in pixels |
-| `className` | `string` | ❌ No | CSS class for container |
-| `style` | `React.CSSProperties` | ❌ No | Inline styles for container |
-
-### Vanilla JS Constructor Options
+#### `XRWorld`
+Main class for managing VR sessions and the 3D scene.
 
 ```typescript
-interface LeavesAndSnowOptions {
-  width?: number;          // Canvas width (default: window.innerWidth)
-  height?: number;         // Canvas height (default: window.innerHeight)
-  container?: HTMLElement; // Container element (default: document.body)
-}
+const xrWorld = new XRWorld();
+
+// Properties
+xrWorld.scene          // THREE.Scene
+xrWorld.camera         // THREE.PerspectiveCamera
+xrWorld.renderer       // THREE.WebGLRenderer
+xrWorld.VRSessionActive // boolean
+
+// Methods
+xrWorld.startVRSession()
+xrWorld.endVRSession()
+xrWorld.getCameraObject()
+```
+
+#### `XRHand`
+Hand tracking support for VR.
+
+```typescript
+import { XRHand, XRHandParts } from '@drivej/xrworld';
+```
+
+#### `XRRemote`
+VR controller support.
+
+```typescript
+import { XRRemote } from '@drivej/xrworld';
+```
+
+#### `XREventManager`
+Event system for XR interactions.
+
+```typescript
+import { XREventManager } from '@drivej/xrworld';
+```
+
+### Utility Functions
+
+#### 3D Object Creation
+
+```typescript
+import {
+  createSphere,
+  createBox,
+  createGridRoom,
+  createInfinitePlane,
+  createInfiniteColorPlane
+} from '@drivej/xrworld';
+
+// Create a sphere
+const sphere = createSphere({
+  radius: 0.2,
+  color: 0xff0000,
+  position: [0, 1.6, -2],
+  opacity: 1
+});
+
+// Create a box
+const box = createBox({
+  radius: 0.3,
+  color: 0x00ff00,
+  position: [1, 1.6, -2]
+});
+
+// Create a VR room
+const room = createGridRoom();
+```
+
+#### Helper Functions
+
+```typescript
+import {
+  clamp,
+  interpolate,
+  rad,
+  rand,
+  lookAtObject,
+  drawLine
+} from '@drivej/xrworld';
+
+// Math utilities
+const value = clamp(x, min, max);
+const interpolated = interpolate(start, end, t);
+const radians = rad(degrees);
+const random = rand(min, max);
 ```
 
 ### TypeScript Support
 
 Full TypeScript support with type definitions:
 
-```tsx
-import LeavesAndSnowReact, { LeavesAndSnowReactProps } from '@drivej/my-component';
-
-const props: LeavesAndSnowReactProps = {
-  width: 800,
-  height: 600,
-  className: 'my-animation',
-  style: { position: 'absolute' }
-};
-
-<LeavesAndSnowReact {...props} />
+```typescript
+import {
+  XRWorld,
+  XRHand,
+  XRRemote,
+  UserData,
+  VelocityObject,
+  XREvent,
+  XRRemoteEvent
+} from '@drivej/xrworld';
 ```
 
 ---
@@ -118,23 +222,24 @@ const props: LeavesAndSnowReactProps = {
 ### Project Structure
 
 ```
-@drivej/my-component/
+@drivej/xrworld/
 ├── src/                         # Source files
 │   ├── index.ts                # Main entry point
-│   ├── LeavesAndSnowReact.tsx  # React component
-│   ├── LeavesAndSnow.js        # Vanilla JS class
-│   ├── Leaf.js                 # Leaf particle
-│   ├── Snowflake.js            # Snowflake particle
-│   ├── Pointer.js              # Mouse tracking
-│   ├── utils.js                # Utilities
-│   └── assets/                 # Image assets
-│       ├── autumn_sky.png
-│       ├── fall_woman.png
-│       └── leaf.png
+│   ├── js/                     # Core XR functionality
+│   │   ├── XRWorld.ts          # Main VR world class
+│   │   ├── XRHand.ts           # Hand tracking
+│   │   ├── XRRemote.ts         # Controller support
+│   │   ├── XREventManager.ts   # Event system
+│   │   ├── XRUtils.ts          # 3D utilities
+│   │   ├── XRBackground.ts     # Background/skybox
+│   │   ├── XRMouse.ts          # Mouse input
+│   │   └── Utils.js            # General utilities
+│   └── utils/                  # Additional utilities
 ├── dist/                        # Built files (committed!)
 │   ├── index.js                # Bundled code
 │   ├── index.d.ts              # TypeScript definitions
 │   └── *.js.map                # Source maps
+├── test-app/                    # React test application
 ├── package.json                # Package config
 ├── tsconfig.json               # TypeScript config
 └── vite.config.build.ts        # Build config
@@ -172,7 +277,7 @@ git push origin main
 
 Users can then update:
 ```bash
-npm install github:drivej/my-component
+npm install github:drivej/xrworld
 ```
 
 ---
@@ -193,6 +298,8 @@ npm test
 
 Open http://localhost:5173
 
+The test-app is a React application that demonstrates the XRWorld library.
+
 ### Manual Test
 
 ```bash
@@ -204,36 +311,33 @@ npm run dev
 ### Using npm link
 
 ```bash
-# In leaves directory
+# In xrworld directory
 npm link
 
 # In your test project
-npm link @drivej/my-component
+npm link @drivej/xrworld
 ```
 
 ---
 
 ## ⚡ Performance
 
-- **WebGL Rendering** - Hardware-accelerated graphics
-- **Optimized Particles** - 200+ particles at smooth 60fps
-- **Efficient Rendering** - Depth-based tinting (no expensive filters)
-- **Memory Management** - Proper cleanup on unmount
-- **Asset Optimization** - Images bundled as base64 for faster loading
+- **WebGL Rendering** - Hardware-accelerated 3D graphics via Three.js
+- **VR Optimized** - Designed for smooth 90fps VR experiences
+- **Efficient Scene Management** - Optimized object creation and updates
+- **Memory Management** - Proper cleanup and resource management
 
 ---
 
 ## 🌐 Browser Support
 
-Works in all modern browsers that support:
-- WebGL
-- ES6 Modules
-- PixiJS v8
+Requires browsers with WebXR support:
+- **Meta Quest Browser** (Quest 2, Quest 3, Quest Pro)
+- **Chrome/Edge** with WebXR Device API
+- **Firefox Reality**
 
-Tested on:
-- Chrome/Edge 87+
-- Firefox 78+
-- Safari 14+
+Desktop testing:
+- Chrome/Edge with WebXR Emulator extension
 
 ---
 
@@ -245,14 +349,16 @@ MIT
 
 ## 🙏 Credits
 
-Built with [PixiJS](https://pixijs.com/) - The HTML5 Creation Engine
+Built with [Three.js](https://threejs.org/) - JavaScript 3D Library
 
 ---
 
 ## 🔗 Links
 
-- **Repository**: https://github.com/drivej/my-component
-- **Issues**: https://github.com/drivej/my-component/issues
+- **Repository**: https://github.com/drivej/xrworld
+- **Issues**: https://github.com/drivej/xrworld/issues
+- **Three.js**: https://threejs.org/
+- **WebXR**: https://immersiveweb.dev/
 
 ---
 
@@ -261,9 +367,10 @@ Built with [PixiJS](https://pixijs.com/) - The HTML5 Creation Engine
 If you encounter any issues or have questions:
 1. Check the examples in this README
 2. Review the TypeScript definitions
-3. Open an issue on GitHub
+3. Check the test-app for usage examples
+4. Open an issue on GitHub
 
 ---
 
-**Enjoy your beautiful falling leaves animation!** 🍂❄️
+**Happy VR Development!** 🥽✨
 

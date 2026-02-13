@@ -29,7 +29,7 @@ const tempMatrix = new THREE.Matrix4();
 export class XRWorld {
   clock = new THREE.Clock();
   scene: THREE.Scene;
-  container: HTMLDivElement;
+  // container: HTMLDivElement;
   camera: THREE.PerspectiveCamera;
   // room: THREE.Object3D; // THREE.LineSegments<THREE.BufferGeometry, THREE.LineBasicMaterial>;
   dolly: THREE.Object3D; // THREE.LineSegments<THREE.BufferGeometry, THREE.LineBasicMaterial>;
@@ -58,12 +58,13 @@ export class XRWorld {
   handsInitialized: boolean = false;
   // fpc!: FirstPersonControls;
   private _session!: XRSession | null;
+  vrButton: HTMLElement;
 
   constructor() {
     this.getCameraObject = this.getCameraObject.bind(this);
 
-    this.container = document.createElement('div');
-    document.body.appendChild(this.container);
+    // this.container = document.createElement('div');
+    // document.body.appendChild(this.container);
 
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x111111);
@@ -109,12 +110,12 @@ export class XRWorld {
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    // this.renderer.setSize(window.innerWidth, window.innerHeight);
     // this.renderer.setClearColor(0x222222, 1);
     this.renderer.outputEncoding = THREE.sRGBEncoding;
     this.renderer.xr.enabled = true;
     // this.renderer.xr.getSession().end();
-    this.container.appendChild(this.renderer.domElement);
+    // this.container.appendChild(this.renderer.domElement);
 
     this.renderer.xr.addEventListener('sessionstart', this.onSessionStart.bind(this));
     this.renderer.xr.addEventListener('sessionend', this.onSessionEnd.bind(this));
@@ -133,9 +134,10 @@ export class XRWorld {
 
     this.eventManager = new XREventManager(this);
 
-    window.addEventListener('resize', this.onWindowResize.bind(this));
-    this.onWindowResize();
-    document.body.appendChild(VRButton.createButton(this.renderer));
+    // window.addEventListener('resize', this.onWindowResize.bind(this));
+    // this.onWindowResize();
+    // document.body.appendChild(VRButton.createButton(this.renderer));
+    this.vrButton = VRButton.createButton(this.renderer);
     this.render();
 
     this.startAnimate();
@@ -317,13 +319,19 @@ export class XRWorld {
     cancelAnimationFrame(this.animateRequest);
   }
 
-  onWindowResize() {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+  // onWindowResize() {
+  //   const width = window.innerWidth;
+  //   const height = window.innerHeight;
+  //   this.camera.aspect = width / height;
+  //   this.camera.updateProjectionMatrix();
+  //   this.renderer.setSize(width, height);
+  //   // this.fpc?.handleResize();
+  // }
+
+  setSize(width: number, height: number) {
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
-    // this.fpc?.handleResize();
   }
 
   setSelectedObjectRight(obj: THREE.Mesh<THREE.BufferGeometry, THREE.MeshStandardMaterial>) {

@@ -25,11 +25,12 @@ export declare class XRRemote<U extends Record<string, unknown> = Record<string,
     isConnected: boolean;
     isSelecting: boolean;
     userData: U;
+    private eventListeners;
     constructor(controllerIndex: number, renderer: THREE.WebGLRenderer, scene: THREE.Scene | THREE.Object3D);
     buildController(data: {
         targetRayMode: string;
     }): THREE.Line<THREE.BufferGeometry, THREE.LineBasicMaterial> | THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial> | undefined;
-    getSelectedObject(children: THREE.Object3D<THREE.Event>[], recursive?: boolean): THREE.Intersection<THREE.Object3D<THREE.Event>>;
+    getSelectedObject(children: THREE.Object3D<THREE.Event>[], recursive?: boolean): THREE.Intersection<THREE.Object3D<THREE.Event>> | null;
     on(eventType: XRRemoteEventType, callback: (event: XRRemoteEvent) => void): XRRemote;
     off(eventType: XRRemoteEventType, callback: (event: XRRemoteEvent) => void): XRRemote;
     lastPosition: THREE.Vector3;
