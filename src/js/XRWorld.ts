@@ -1,8 +1,6 @@
 import * as THREE from 'three';
-// import { FirstPersonControls } from './FirstPersonControls2';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { VRButton } from 'three/examples/jsm/webxr/VRButton';
-// import { FirstPersonControls } from './FirstPersonControls2';
 import { XRBackground } from './XRBackground';
 import { XREventManager } from './XREventManager';
 import { XRHand } from './XRHand';
@@ -11,28 +9,12 @@ import { XRRemote } from './XRRemote';
 
 // futre state: https://www.halfbaked.city/tutorials/user-inputs-part-3
 
-// const clock = new THREE.Clock();
 const tempMatrix = new THREE.Matrix4();
-
-// interface IObjectInfoItem<T = Record<string, string | number>> {
-//   object: THREE.Object3D;
-//   action?: string;
-//   data: T;
-// }
-
-// interface IObjectInfo {
-//   faceCamera: THREE.Mesh<THREE.BufferGeometry, THREE.Material | THREE.MeshStandardMaterial>[];
-//   pointerDown: THREE.Mesh<THREE.BufferGeometry, THREE.Material | THREE.MeshStandardMaterial>[];
-//   click: THREE.Mesh<THREE.BufferGeometry, THREE.Material | THREE.MeshStandardMaterial>[];
-// }
-
 export class XRWorld {
   clock = new THREE.Clock();
   scene: THREE.Scene;
-  // container: HTMLDivElement;
   camera: THREE.PerspectiveCamera;
-  // room: THREE.Object3D; // THREE.LineSegments<THREE.BufferGeometry, THREE.LineBasicMaterial>;
-  dolly: THREE.Object3D; // THREE.LineSegments<THREE.BufferGeometry, THREE.LineBasicMaterial>;
+  dolly: THREE.Object3D;
   dummyCam: THREE.Object3D;
   renderer: THREE.WebGLRenderer;
   tmpPosition = new THREE.Vector3();
@@ -56,15 +38,11 @@ export class XRWorld {
   friction = 0.95;
   controllersInitialized = false;
   handsInitialized: boolean = false;
-  // fpc!: FirstPersonControls;
-  private _session!: XRSession | null;
+  private session!: XRSession | null;
   vrButton: HTMLElement;
 
   constructor() {
     this.getCameraObject = this.getCameraObject.bind(this);
-
-    // this.container = document.createElement('div');
-    // document.body.appendChild(this.container);
 
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x111111);
@@ -76,25 +54,12 @@ export class XRWorld {
 
     this.audioListener = new THREE.AudioListener();
     this.camera.add(this.audioListener);
-    // this.camera.addEventListener('connected', (e) => console.log('camera connected', e.type, e));
-    // this.scene.add(this.camera);
 
     this.dolly = new THREE.Object3D();
-    // this.dolly.position.z = 5;
     this.dolly.add(this.camera);
     this.scene.add(this.dolly);
     this.dummyCam = new THREE.Object3D();
     this.camera.add(this.dummyCam);
-
-    // this.fpc = new FirstPersonControls(this.camera, this.container);
-    // this.fpc.lookSpeed = 0.2;
-    // this.fpc.movementSpeed = 5;
-    // this.fpc.constrainVertical = true;
-    // this.fpc.activeLook = true;
-    // this.fpc.mouseDragOn = true;
-
-    // this.room = new THREE.Object3D(); // new THREE.LineSegments(new BoxLineGeometry(10, 10, 10, 10, 10, 10).translate(0, 5, 0), new THREE.LineBasicMaterial({ color: 0x808080 }));
-    // this.scene.add(this.room);
 
     // lighting
     this.scene.add(new THREE.HemisphereLight(0x606060, 0x404040));
@@ -139,7 +104,6 @@ export class XRWorld {
     // document.body.appendChild(VRButton.createButton(this.renderer));
     this.vrButton = VRButton.createButton(this.renderer);
     this.render();
-
     this.startAnimate();
   }
 
@@ -276,7 +240,7 @@ export class XRWorld {
   };
 
   onSessionStart() {
-    this._session = this.renderer.xr.getSession() as XRSession;
+    this.session = this.renderer.xr.getSession() as XRSession;
     console.log('onSessionStart');
 
     // let inputSources = this._session.inputSources;
@@ -296,7 +260,8 @@ export class XRWorld {
 
   onSessionEnd() {
     console.log('onSessionEnd');
-    this._session = null;
+    this.session?.end();
+    this.session = null;
     this.controls.enabled = true;
     this.VRSessionActive = false;
     this.startAnimate();

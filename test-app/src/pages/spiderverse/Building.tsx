@@ -72,8 +72,6 @@ function getMaterial(asset: BuildingAsset, width: number, height: number) {
   });
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
-
-  // texture.repeat.set(~~(width / asset.width), ~~(height / asset.height)); // width, height
   texture.repeat.set(width / asset.width, height / asset.height); // width, height
 
   const material = new THREE.MeshStandardMaterial({ map: texture });

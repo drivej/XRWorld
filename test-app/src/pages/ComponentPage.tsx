@@ -1,11 +1,7 @@
-// import { useEffect, useRef, useState } from 'react';
-// import { MyComponent } from 'my-component';
-// import audioSrc from '../assets/48K_1713045663.m4a';
-
 import { useEffect, useRef } from 'react';
 import { useResizeObserver } from 'usehooks-ts';
 import { XRWorld } from '../../../dist';
-import { initSpiderverse } from './vectors/spiderverse';
+import { initSpiderverse } from './spiderverse/spiderverse';
 
 function ComponentPage() {
   const container = useRef<HTMLDivElement>(null);
@@ -40,7 +36,7 @@ function ComponentPage() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-      <div ref={container} style={{ border:'1px solid', flexGrow: 1, width: '100%', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}></div>
+      <div ref={container} style={{ border: '1px solid', flexGrow: 1, width: '100%', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}></div>
       <div style={{ flexShrink: 1 }}>
         <h1 style={{ marginBottom: '2rem', color: '#fff' }}>Component Page</h1>
         <pre>{JSON.stringify({ width, height }, null, 2)}</pre>

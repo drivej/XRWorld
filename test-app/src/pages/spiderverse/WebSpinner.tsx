@@ -1,6 +1,5 @@
-import * as THREE from 'three';
-// import { createSphere } from '../../js/XRUtils';
 import { createSphere } from '@drivej/xrworld';
+import * as THREE from 'three';
 import { Chain } from './Chain';
 import { Moov, Moover } from './Moov';
 
@@ -80,17 +79,9 @@ export class WebSpinner extends THREE.Group {
   update() {
     if (this.isActive) {
       this.chain.fromTo(this.fromPoint, this.currentPoint);
-      //   const positions = this.line.geometry.attributes.position.array as Float32Array;
-      //   positions[0] = this.fromPoint.x;
-      //   positions[1] = this.fromPoint.y;
-      //   positions[2] = this.fromPoint.z;
-      //   positions[3] = this.currentPoint.x;
-      //   positions[4] = this.currentPoint.y;
-      //   positions[5] = this.currentPoint.z;
-      //   this.line.geometry.attributes.position.needsUpdate = true;
     }
   }
-  
+
   getVector() {
     if (this.isAttached) {
       this.vector.subVectors(this.toPoint, this.fromPoint);

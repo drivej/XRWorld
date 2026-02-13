@@ -1,7 +1,5 @@
 import { createSphere, rand } from '@drivej/xrworld';
 import * as THREE from 'three';
-// import { rand } from '../../js/Utils';
-// import { createSphere } from '../../js/XRUtils';
 
 export class Chain extends THREE.Group {
   links: THREE.Mesh<THREE.SphereGeometry, THREE.MeshLambertMaterial>[] = [];
@@ -14,7 +12,6 @@ export class Chain extends THREE.Group {
     while (i--) {
       const link = createSphere({ radius: 0.035, color: 0xcccccc, position: [rand(-50, 50), rand(3, 30), rand(-50, 50)] });
       this.links.push(link);
-      //   container.add(link);
       this.add(link);
     }
     this.line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(new Array(length).fill(new THREE.Vector3())), new THREE.LineBasicMaterial({ color: 0xcccccc }));
@@ -22,8 +19,7 @@ export class Chain extends THREE.Group {
 
     this.test = new THREE.Line(new THREE.BufferGeometry().setFromPoints(new Array(2).fill(new THREE.Vector3())), new THREE.LineBasicMaterial({ color: 0xffcccc }));
     this.add(this.test);
-    // container.add(this.line);
-    // container.add(this);
+
     this.visible = false;
   }
 

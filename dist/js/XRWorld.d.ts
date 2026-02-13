@@ -33,7 +33,7 @@ export declare class XRWorld {
     friction: number;
     controllersInitialized: boolean;
     handsInitialized: boolean;
-    private _session;
+    private session;
     vrButton: HTMLElement;
     constructor();
     set gravity(val: number);

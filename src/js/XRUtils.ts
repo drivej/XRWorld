@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import * as THREE from 'three';
 import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry';
 // import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min';
-import { Grid } from '../utils/Grid';
+import { Grid } from './Grid';
 import { ThemeColors } from './ThemeColors';
 import { rand } from './Utils';
 
