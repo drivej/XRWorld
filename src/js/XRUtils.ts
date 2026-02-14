@@ -130,14 +130,23 @@ export function createInfinitePlane(y = 0, size = 13, repeat = 256) {
   return mesh;
 }
 
-export function createInfiniteColorPlane(y = 0, size = 13, _repeat = 256) {
+export function createInfiniteColorPlane({ y = 0, size = 13, color = 0x111111 }: { y?: number; size?: number; color?: THREE.ColorRepresentation } = {}): THREE.Mesh {
   const geo = new THREE.PlaneGeometry(Math.pow(2, size), Math.pow(2, size));
-  const mat = new THREE.MeshLambertMaterial({ color: 0x111111 });
+  const mat = new THREE.MeshLambertMaterial({ color });
   const mesh = new THREE.Mesh(geo, mat);
   mesh.position.set(0, y, 0);
   mesh.rotation.set(Math.PI / -2, 0, 0);
   return mesh;
 }
+
+// export function createInfiniteColorPlane(y = 0, size = 13, _repeat = 256) {
+//   const geo = new THREE.PlaneGeometry(Math.pow(2, size), Math.pow(2, size));
+//   const mat = new THREE.MeshLambertMaterial({ color: 0x111111 });
+//   const mesh = new THREE.Mesh(geo, mat);
+//   mesh.position.set(0, y, 0);
+//   mesh.rotation.set(Math.PI / -2, 0, 0);
+//   return mesh;
+// }
 
 export function drawLine(points: THREE.Vector3[], color = 0xff0000) {
   const material = new THREE.LineBasicMaterial({ color });

@@ -22,7 +22,11 @@ export declare function createBox({ radius, color, position, opacity }?: ObjectO
 export declare function createGridRoom(size?: number): THREE.LineSegments<THREE.BufferGeometry, THREE.LineBasicMaterial>;
 export declare function generateRandomCanvasTexture(): THREE.CanvasTexture;
 export declare function createInfinitePlane(y?: number, size?: number, repeat?: number): THREE.Mesh<THREE.PlaneGeometry, THREE.MeshLambertMaterial>;
-export declare function createInfiniteColorPlane(y?: number, size?: number, _repeat?: number): THREE.Mesh<THREE.PlaneGeometry, THREE.MeshLambertMaterial>;
+export declare function createInfiniteColorPlane({ y, size, color }?: {
+    y?: number;
+    size?: number;
+    color?: THREE.ColorRepresentation;
+}): THREE.Mesh;
 export declare function drawLine(points: THREE.Vector3[], color?: number): THREE.Line<THREE.BufferGeometry, THREE.LineBasicMaterial>;
 export declare function buildAxis(): THREE.Object3D<THREE.Event>;
 export declare function lookAtObject(looker: THREE.Object3D, o: THREE.Object3D, onComplete?: () => void): void;

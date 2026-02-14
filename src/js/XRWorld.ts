@@ -45,7 +45,7 @@ export class XRWorld {
     this.getCameraObject = this.getCameraObject.bind(this);
 
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x111111);
+    this.scene.background = new THREE.Color(0x333333);
 
     this.background = new XRBackground(this);
 
@@ -62,7 +62,10 @@ export class XRWorld {
     this.camera.add(this.dummyCam);
 
     // lighting
-    this.scene.add(new THREE.HemisphereLight(0x606060, 0x404040));
+
+    const ambience = new THREE.AmbientLight(0xffffff, 0.7); // color, intensity
+    this.scene.add(ambience);
+    // this.scene.add(new THREE.HemisphereLight(0x606060, 0x404040));
     const light = new THREE.DirectionalLight(0xffffff);
     light.position.set(1, 1, 1).normalize();
     // light.castShadow = true;

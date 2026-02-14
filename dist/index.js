@@ -3303,10 +3303,12 @@ class Rn {
       ArrowLeft: { isDown: !1, downTime: 0, speed: 0 },
       ArrowUp: { isDown: !1, downTime: 0, speed: 0 },
       ArrowDown: { isDown: !1, downTime: 0, speed: 0 }
-    }, this.beforeRender = (t) => {
-    }, this.direction = new p.Vector3(), this.getCameraObject = this.getCameraObject.bind(this), this.scene = new p.Scene(), this.scene.background = new p.Color(1118481), this.background = new Qt(this), this.camera = new p.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 2e3), this.camera.position.set(0, 1.6, 0), this.audioListener = new p.AudioListener(), this.camera.add(this.audioListener), this.dolly = new p.Object3D(), this.dolly.add(this.camera), this.scene.add(this.dolly), this.dummyCam = new p.Object3D(), this.camera.add(this.dummyCam), this.scene.add(new p.HemisphereLight(6316128, 4210752));
-    const e = new p.DirectionalLight(16777215);
-    e.position.set(1, 1, 1).normalize(), this.scene.add(e), e.shadow.mapSize.width = 512, e.shadow.mapSize.height = 512, e.shadow.camera.near = 0.5, e.shadow.camera.far = 1500, this.renderer = new p.WebGLRenderer({ antialias: !0 }), this.renderer.setPixelRatio(window.devicePixelRatio), this.renderer.outputEncoding = p.sRGBEncoding, this.renderer.xr.enabled = !0, this.renderer.xr.addEventListener("sessionstart", this.onSessionStart.bind(this)), this.renderer.xr.addEventListener("sessionend", this.onSessionEnd.bind(this)), this.rightHand = new je(1, this.renderer, this.dolly), this.leftHand = new je(0, this.renderer, this.dolly), this.rightController = new Be(1, this.renderer, this.dolly), this.leftController = new Be(0, this.renderer, this.dolly), this.eventManager = new es(this), this.vrButton = K.createButton(this.renderer), this.render(), this.startAnimate();
+    }, this.beforeRender = (s) => {
+    }, this.direction = new p.Vector3(), this.getCameraObject = this.getCameraObject.bind(this), this.scene = new p.Scene(), this.scene.background = new p.Color(3355443), this.background = new Qt(this), this.camera = new p.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 2e3), this.camera.position.set(0, 1.6, 0), this.audioListener = new p.AudioListener(), this.camera.add(this.audioListener), this.dolly = new p.Object3D(), this.dolly.add(this.camera), this.scene.add(this.dolly), this.dummyCam = new p.Object3D(), this.camera.add(this.dummyCam);
+    const e = new p.AmbientLight(16777215, 0.7);
+    this.scene.add(e);
+    const t = new p.DirectionalLight(16777215);
+    t.position.set(1, 1, 1).normalize(), this.scene.add(t), t.shadow.mapSize.width = 512, t.shadow.mapSize.height = 512, t.shadow.camera.near = 0.5, t.shadow.camera.far = 1500, this.renderer = new p.WebGLRenderer({ antialias: !0 }), this.renderer.setPixelRatio(window.devicePixelRatio), this.renderer.outputEncoding = p.sRGBEncoding, this.renderer.xr.enabled = !0, this.renderer.xr.addEventListener("sessionstart", this.onSessionStart.bind(this)), this.renderer.xr.addEventListener("sessionend", this.onSessionEnd.bind(this)), this.rightHand = new je(1, this.renderer, this.dolly), this.leftHand = new je(0, this.renderer, this.dolly), this.rightController = new Be(1, this.renderer, this.dolly), this.leftController = new Be(0, this.renderer, this.dolly), this.eventManager = new es(this), this.vrButton = K.createButton(this.renderer), this.render(), this.startAnimate();
   }
   set gravity(e) {
     this.globalForces.setY(e);
@@ -3541,8 +3543,8 @@ function Pn(r = 0, e = 13, t = 256) {
   const n = new p.PlaneGeometry(Math.pow(2, e), Math.pow(2, e)), i = new p.MeshLambertMaterial({ map: s }), o = new p.Mesh(n, i);
   return o.position.set(0, r, 0), o.rotation.set(Math.PI / -2, 0, 0), o;
 }
-function On(r = 0, e = 13, t = 256) {
-  const s = new p.PlaneGeometry(Math.pow(2, e), Math.pow(2, e)), n = new p.MeshLambertMaterial({ color: 1118481 }), i = new p.Mesh(s, n);
+function On({ y: r = 0, size: e = 13, color: t = 1118481 } = {}) {
+  const s = new p.PlaneGeometry(Math.pow(2, e), Math.pow(2, e)), n = new p.MeshLambertMaterial({ color: t }), i = new p.Mesh(s, n);
   return i.position.set(0, r, 0), i.rotation.set(Math.PI / -2, 0, 0), i;
 }
 function pe(r, e = 16711680) {

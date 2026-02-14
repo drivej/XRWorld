@@ -13,13 +13,15 @@ function initSpiderverse() {
   world.initControllers();
   world.initOrbitControls();
 
+  // world.background.buildSceneBackground([xpos, xneg, ypos, yneg, zpos, zneg]);
+
   world.renderer.xr.addEventListener('sessionstart', () => {
     firstPerson = world.dolly;
   });
 
   world.renderer.shadowMap.enabled = true;
 
-  const plane = createInfiniteColorPlane();
+  const plane = createInfiniteColorPlane({ color: 0xbbbbbb });
   // plane.receiveShadow = true;
   world.scene.add(plane);
 
