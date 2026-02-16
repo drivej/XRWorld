@@ -255,8 +255,6 @@ class Mn {
   onUp(e, t) {
     return this.on("up", e, t), this;
   }
-  dummyCallback() {
-  }
   onClick(e, t = {}) {
     return this.initEvent("down"), this.initEvent("up"), this.eventManager.on(
       "up",
