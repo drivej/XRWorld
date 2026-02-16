@@ -84,6 +84,8 @@ export class MouseController {
   }
 
   onClick(callback: CustomEventCallback<Payload>, options: CustomEventOptions = {}): MouseController {
+    this.initEvent('down');
+    this.initEvent('up');
     this.eventManager.on(
       'up',
       (e) => {

@@ -256,7 +256,7 @@ class Mn {
     return this.on("up", e, t), this;
   }
   onClick(e, t = {}) {
-    return this.eventManager.on(
+    return this.initEvent("down"), this.initEvent("up"), this.eventManager.on(
       "up",
       (s) => {
         s.mouse.drag.position.length() < 10 && e(s);
