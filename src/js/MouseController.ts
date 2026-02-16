@@ -83,15 +83,13 @@ export class MouseController {
     return this;
   }
 
-  dummyCallback(){
-
-  }
+  dummyCallback() {}
 
   onClick(callback: CustomEventCallback<Payload>, options: CustomEventOptions = {}): MouseController {
-    this.off('up', this.dummyCallback);
-    this.off('down', this.dummyCallback);
-    this.on('up', this.dummyCallback);
-    this.on('down', this.dummyCallback);
+    // Initialize down and up events so drag tracking works
+    this.initEvent('down');
+    this.initEvent('up');
+
     this.eventManager.on(
       'up',
       (e) => {
