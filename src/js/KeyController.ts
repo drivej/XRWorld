@@ -43,7 +43,7 @@ export class KeyController {
     return this;
   }
 
-  off(eventType: 'up' | 'down', callback: CustomEventCallback<KeyboardControllerPayload>): KeyController {
+  off(eventType: 'up' | 'down', callback?: CustomEventCallback<KeyboardControllerPayload>): KeyController {
     this.eventManager.off(eventType, callback);
     return this;
   }

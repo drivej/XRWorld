@@ -55,7 +55,7 @@ export class MouseController {
     this.eventManager.on(eventType, callback, options);
   }
 
-  off(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<MouseControllerPayload>) {
+  off(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback?: CustomEventCallback<MouseControllerPayload>) {
     this.eventManager.off(eventType, callback);
   }
 

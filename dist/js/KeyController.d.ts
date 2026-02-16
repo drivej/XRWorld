@@ -21,7 +21,7 @@ export declare class KeyController {
     constructor();
     initStatus(key: KeyboardKeys | string): void;
     on(eventType: 'up' | 'down', callback: CustomEventCallback<KeyboardControllerPayload>, options?: CustomEventOptions): KeyController;
-    off(eventType: 'up' | 'down', callback: CustomEventCallback<KeyboardControllerPayload>): KeyController;
+    off(eventType: 'up' | 'down', callback?: CustomEventCallback<KeyboardControllerPayload>): KeyController;
     onPress(key: KeyboardKeys | string, callback: CustomEventCallback<KeyboardControllerPayload>, options?: CustomEventOptions): KeyController;
     onRelease(key: KeyboardKeys | string, callback: CustomEventCallback<KeyboardControllerPayload>, options?: CustomEventOptions): KeyController;
     _onKeyDown(e: KeyboardEvent): void;

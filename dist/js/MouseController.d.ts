@@ -34,7 +34,7 @@ export declare class MouseController {
     constructor(element: HTMLElement);
     initEvent(eventType: string): void;
     on(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): void;
-    off(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<MouseControllerPayload>): void;
+    off(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback?: CustomEventCallback<MouseControllerPayload>): void;
     onEnter(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController;
     onLeave(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController;
     onDown(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController;
