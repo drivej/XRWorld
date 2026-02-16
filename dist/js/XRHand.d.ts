@@ -90,7 +90,7 @@ export declare const XRHandParts: {
         JOINT1: string;
         JOINT2: string;
         JOINT3: string;
-        TOP: string;
+        TIP: string;
     };
 };
 export {};

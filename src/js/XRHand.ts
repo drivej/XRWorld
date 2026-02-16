@@ -317,6 +317,6 @@ export const XRHandParts = {
     JOINT1: 'pinky-finger-phalanx-proximal',
     JOINT2: 'pinky-finger-phalanx-intermediate',
     JOINT3: 'pinky-finger-phalanx-distal',
-    TOP: 'pinky-finger-tip'
+    TIP: 'pinky-finger-tip'
   }
 };

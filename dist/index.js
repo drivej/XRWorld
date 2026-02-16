@@ -1,5 +1,5 @@
 import * as p from "three";
-import { Vector2 as b, SphereGeometry as Xe, BoxGeometry as ht, MeshStandardMaterial as ye, InstancedMesh as We, DynamicDrawUsage as ut, Vector3 as S, Matrix4 as J, TrianglesDrawMode as dt, TriangleFanDrawMode as fe, TriangleStripDrawMode as Ye, Loader as pt, LoaderUtils as q, FileLoader as qe, MeshPhysicalMaterial as O, Color as j, LinearSRGBColorSpace as N, SRGBColorSpace as $, SpotLight as ft, PointLight as mt, DirectionalLight as gt, Quaternion as ee, InstancedBufferAttribute as wt, Object3D as se, TextureLoader as _t, ImageBitmapLoader as yt, BufferAttribute as oe, InterleavedBuffer as xt, InterleavedBufferAttribute as Tt, LinearMipmapLinearFilter as Ze, NearestMipmapLinearFilter as bt, LinearMipmapNearestFilter as Et, NearestMipmapNearestFilter as Mt, LinearFilter as me, NearestFilter as Je, RepeatWrapping as ge, MirroredRepeatWrapping as Rt, ClampToEdgeWrapping as At, PointsMaterial as St, Material as re, LineBasicMaterial as Lt, DoubleSide as vt, MeshBasicMaterial as H, PropertyBinding as Dt, BufferGeometry as $e, SkinnedMesh as Ct, Mesh as Qe, LineSegments as Pt, Line as Ot, LineLoop as Nt, Points as It, Group as ae, PerspectiveCamera as kt, MathUtils as et, OrthographicCamera as Ft, Skeleton as jt, AnimationClip as Ut, Bone as Ht, InterpolateDiscrete as Bt, InterpolateLinear as tt, Texture as be, VectorKeyframeTrack as Ee, NumberKeyframeTrack as Me, QuaternionKeyframeTrack as Re, ColorManagement as Ae, FrontSide as Gt, Interpolant as Vt, Box3 as Kt, Sphere as zt, Controls as Xt, MOUSE as G, TOUCH as B, Spherical as Se, Ray as Wt, Plane as Yt, Float32BufferAttribute as qt } from "three";
+import { Vector2 as b, SphereGeometry as Xe, BoxGeometry as ht, MeshStandardMaterial as ye, InstancedMesh as We, DynamicDrawUsage as ut, Vector3 as S, Matrix4 as J, TrianglesDrawMode as dt, TriangleFanDrawMode as fe, TriangleStripDrawMode as Ye, Loader as pt, LoaderUtils as q, FileLoader as qe, MeshPhysicalMaterial as N, Color as j, LinearSRGBColorSpace as O, SRGBColorSpace as $, SpotLight as ft, PointLight as mt, DirectionalLight as gt, Quaternion as ee, InstancedBufferAttribute as wt, Object3D as se, TextureLoader as _t, ImageBitmapLoader as yt, BufferAttribute as oe, InterleavedBuffer as xt, InterleavedBufferAttribute as Tt, LinearMipmapLinearFilter as Ze, NearestMipmapLinearFilter as bt, LinearMipmapNearestFilter as Et, NearestMipmapNearestFilter as Mt, LinearFilter as me, NearestFilter as Je, RepeatWrapping as ge, MirroredRepeatWrapping as Rt, ClampToEdgeWrapping as At, PointsMaterial as St, Material as re, LineBasicMaterial as Lt, DoubleSide as vt, MeshBasicMaterial as H, PropertyBinding as Dt, BufferGeometry as $e, SkinnedMesh as Ct, Mesh as Qe, LineSegments as Pt, Line as Nt, LineLoop as Ot, Points as It, Group as ae, PerspectiveCamera as kt, MathUtils as et, OrthographicCamera as Ft, Skeleton as jt, AnimationClip as Ut, Bone as Ht, InterpolateDiscrete as Bt, InterpolateLinear as tt, Texture as be, VectorKeyframeTrack as Ee, NumberKeyframeTrack as Me, QuaternionKeyframeTrack as Re, ColorManagement as Ae, FrontSide as Gt, Interpolant as Vt, Box3 as Kt, Sphere as zt, Controls as Xt, MOUSE as G, TOUCH as B, Spherical as Se, Ray as Wt, Plane as Yt, Float32BufferAttribute as qt } from "three";
 import xe from "gsap";
 class K {
   /**
@@ -652,7 +652,7 @@ class nt extends pt {
       n && n(new Error("THREE.GLTFLoader: Unsupported asset. glTF versions >=2.0 are supported."));
       return;
     }
-    const c = new Os(i, {
+    const c = new Ns(i, {
       path: t || this.resourcePath || "",
       crossOrigin: this.crossOrigin,
       requestHeader: this.requestHeader,
@@ -761,7 +761,7 @@ class ss {
     const i = t.json, a = ((i.extensions && i.extensions[this.name] || {}).lights || [])[e];
     let c;
     const u = new j(16777215);
-    a.color !== void 0 && u.setRGB(a.color[0], a.color[1], a.color[2], N);
+    a.color !== void 0 && u.setRGB(a.color[0], a.color[1], a.color[2], O);
     const h = a.range !== void 0 ? a.range : 0;
     switch (a.type) {
       case "directional":
@@ -803,7 +803,7 @@ class ns {
     if (i) {
       if (Array.isArray(i.baseColorFactor)) {
         const o = i.baseColorFactor;
-        e.color.setRGB(o[0], o[1], o[2], N), e.opacity = o[3];
+        e.color.setRGB(o[0], o[1], o[2], O), e.opacity = o[3];
       }
       i.baseColorTexture !== void 0 && n.push(s.assignTexture(e, "map", i.baseColorTexture, $));
     }
@@ -828,7 +828,7 @@ class os {
   }
   getMaterialType(e) {
     const s = this.parser.json.materials[e];
-    return !s.extensions || !s.extensions[this.name] ? null : O;
+    return !s.extensions || !s.extensions[this.name] ? null : N;
   }
   extendMaterialParams(e, t) {
     const s = this.parser, n = s.json.materials[e];
@@ -848,7 +848,7 @@ class rs {
   }
   getMaterialType(e) {
     const s = this.parser.json.materials[e];
-    return !s.extensions || !s.extensions[this.name] ? null : O;
+    return !s.extensions || !s.extensions[this.name] ? null : N;
   }
   extendMaterialParams(e, t) {
     const n = this.parser.json.materials[e];
@@ -864,7 +864,7 @@ class as {
   }
   getMaterialType(e) {
     const s = this.parser.json.materials[e];
-    return !s.extensions || !s.extensions[this.name] ? null : O;
+    return !s.extensions || !s.extensions[this.name] ? null : N;
   }
   extendMaterialParams(e, t) {
     const s = this.parser, n = s.json.materials[e];
@@ -880,7 +880,7 @@ class ls {
   }
   getMaterialType(e) {
     const s = this.parser.json.materials[e];
-    return !s.extensions || !s.extensions[this.name] ? null : O;
+    return !s.extensions || !s.extensions[this.name] ? null : N;
   }
   extendMaterialParams(e, t) {
     const s = this.parser, n = s.json.materials[e];
@@ -891,7 +891,7 @@ class ls {
     const o = n.extensions[this.name];
     if (o.sheenColorFactor !== void 0) {
       const l = o.sheenColorFactor;
-      t.sheenColor.setRGB(l[0], l[1], l[2], N);
+      t.sheenColor.setRGB(l[0], l[1], l[2], O);
     }
     return o.sheenRoughnessFactor !== void 0 && (t.sheenRoughness = o.sheenRoughnessFactor), o.sheenColorTexture !== void 0 && i.push(s.assignTexture(t, "sheenColorMap", o.sheenColorTexture, $)), o.sheenRoughnessTexture !== void 0 && i.push(s.assignTexture(t, "sheenRoughnessMap", o.sheenRoughnessTexture)), Promise.all(i);
   }
@@ -902,7 +902,7 @@ class cs {
   }
   getMaterialType(e) {
     const s = this.parser.json.materials[e];
-    return !s.extensions || !s.extensions[this.name] ? null : O;
+    return !s.extensions || !s.extensions[this.name] ? null : N;
   }
   extendMaterialParams(e, t) {
     const s = this.parser, n = s.json.materials[e];
@@ -918,7 +918,7 @@ class hs {
   }
   getMaterialType(e) {
     const s = this.parser.json.materials[e];
-    return !s.extensions || !s.extensions[this.name] ? null : O;
+    return !s.extensions || !s.extensions[this.name] ? null : N;
   }
   extendMaterialParams(e, t) {
     const s = this.parser, n = s.json.materials[e];
@@ -927,7 +927,7 @@ class hs {
     const i = [], o = n.extensions[this.name];
     t.thickness = o.thicknessFactor !== void 0 ? o.thicknessFactor : 0, o.thicknessTexture !== void 0 && i.push(s.assignTexture(t, "thicknessMap", o.thicknessTexture)), t.attenuationDistance = o.attenuationDistance || 1 / 0;
     const l = o.attenuationColor || [1, 1, 1];
-    return t.attenuationColor = new j().setRGB(l[0], l[1], l[2], N), Promise.all(i);
+    return t.attenuationColor = new j().setRGB(l[0], l[1], l[2], O), Promise.all(i);
   }
 }
 class us {
@@ -936,7 +936,7 @@ class us {
   }
   getMaterialType(e) {
     const s = this.parser.json.materials[e];
-    return !s.extensions || !s.extensions[this.name] ? null : O;
+    return !s.extensions || !s.extensions[this.name] ? null : N;
   }
   extendMaterialParams(e, t) {
     const n = this.parser.json.materials[e];
@@ -952,7 +952,7 @@ class ds {
   }
   getMaterialType(e) {
     const s = this.parser.json.materials[e];
-    return !s.extensions || !s.extensions[this.name] ? null : O;
+    return !s.extensions || !s.extensions[this.name] ? null : N;
   }
   extendMaterialParams(e, t) {
     const s = this.parser, n = s.json.materials[e];
@@ -961,7 +961,7 @@ class ds {
     const i = [], o = n.extensions[this.name];
     t.specularIntensity = o.specularFactor !== void 0 ? o.specularFactor : 1, o.specularTexture !== void 0 && i.push(s.assignTexture(t, "specularIntensityMap", o.specularTexture));
     const l = o.specularColorFactor || [1, 1, 1];
-    return t.specularColor = new j().setRGB(l[0], l[1], l[2], N), o.specularColorTexture !== void 0 && i.push(s.assignTexture(t, "specularColorMap", o.specularColorTexture, $)), Promise.all(i);
+    return t.specularColor = new j().setRGB(l[0], l[1], l[2], O), o.specularColorTexture !== void 0 && i.push(s.assignTexture(t, "specularColorMap", o.specularColorTexture, $)), Promise.all(i);
   }
 }
 class ps {
@@ -970,7 +970,7 @@ class ps {
   }
   getMaterialType(e) {
     const s = this.parser.json.materials[e];
-    return !s.extensions || !s.extensions[this.name] ? null : O;
+    return !s.extensions || !s.extensions[this.name] ? null : N;
   }
   extendMaterialParams(e, t) {
     const s = this.parser, n = s.json.materials[e];
@@ -986,7 +986,7 @@ class fs {
   }
   getMaterialType(e) {
     const s = this.parser.json.materials[e];
-    return !s.extensions || !s.extensions[this.name] ? null : O;
+    return !s.extensions || !s.extensions[this.name] ? null : N;
   }
   extendMaterialParams(e, t) {
     const s = this.parser, n = s.json.materials[e];
@@ -1105,7 +1105,7 @@ class ys {
     }));
   }
 }
-const it = "glTF", X = 12, Oe = { JSON: 1313821514, BIN: 5130562 };
+const it = "glTF", X = 12, Ne = { JSON: 1313821514, BIN: 5130562 };
 class xs {
   constructor(e) {
     this.name = y.KHR_BINARY_GLTF, this.content = null, this.body = null;
@@ -1124,10 +1124,10 @@ class xs {
       const l = i.getUint32(o, !0);
       o += 4;
       const a = i.getUint32(o, !0);
-      if (o += 4, a === Oe.JSON) {
+      if (o += 4, a === Ne.JSON) {
         const c = new Uint8Array(e, X + o, l);
         this.content = s.decode(c);
-      } else if (a === Oe.BIN) {
+      } else if (a === Ne.BIN) {
         const c = X + o;
         this.body = e.slice(c, c + l);
       }
@@ -1164,7 +1164,7 @@ class Ts {
             m !== void 0 && (_.normalized = m);
           }
           h(f);
-        }, l, c, N, d);
+        }, l, c, O, d);
       });
     });
   }
@@ -1223,7 +1223,7 @@ const D = {
   5123: Uint16Array,
   5125: Uint32Array,
   5126: Float32Array
-}, Ne = {
+}, Oe = {
   9728: Je,
   9729: me,
   9984: Mt,
@@ -1366,7 +1366,7 @@ function Cs(r) {
   return r.search(/\.jpe?g($|\?)/i) > 0 || r.search(/^data\:image\/jpeg/) === 0 ? "image/jpeg" : r.search(/\.webp($|\?)/i) > 0 || r.search(/^data\:image\/webp/) === 0 ? "image/webp" : r.search(/\.ktx2($|\?)/i) > 0 || r.search(/^data\:image\/ktx2/) === 0 ? "image/ktx2" : "image/png";
 }
 const Ps = new J();
-class Os {
+class Ns {
   constructor(e = {}, t = {}) {
     this.json = e, this.extensions = {}, this.plugins = {}, this.options = t, this.cache = new ts(), this.associations = /* @__PURE__ */ new Map(), this.primitiveCache = {}, this.nodeCache = {}, this.meshCache = { refs: {}, uses: {} }, this.cameraCache = { refs: {}, uses: {} }, this.lightCache = { refs: {}, uses: {} }, this.sourceCache = {}, this.textureCache = {}, this.nodeNamesUsed = {};
     let s = !1, n = -1, i = !1, o = -1;
@@ -1664,7 +1664,7 @@ class Os {
     const c = this.loadImageSource(t, s).then(function(u) {
       u.flipY = !1, u.name = o.name || l.name || "", u.name === "" && typeof l.uri == "string" && l.uri.startsWith("data:image/") === !1 && (u.name = l.uri);
       const d = (i.samplers || {})[o.sampler] || {};
-      return u.magFilter = Ne[d.magFilter] || me, u.minFilter = Ne[d.minFilter] || Ze, u.wrapS = Ie[d.wrapS] || ge, u.wrapT = Ie[d.wrapT] || ge, u.generateMipmaps = !u.isCompressedTexture && u.minFilter !== Je && u.minFilter !== me, n.associations.set(u, { textures: e }), u;
+      return u.magFilter = Oe[d.magFilter] || me, u.minFilter = Oe[d.minFilter] || Ze, u.wrapS = Ie[d.wrapS] || ge, u.wrapT = Ie[d.wrapT] || ge, u.generateMipmaps = !u.isCompressedTexture && u.minFilter !== Je && u.minFilter !== me, n.associations.set(u, { textures: e }), u;
     }).catch(function() {
       return null;
     });
@@ -1775,7 +1775,7 @@ class Os {
       const h = i.pbrMetallicRoughness || {};
       if (l.color = new j(1, 1, 1), l.opacity = 1, Array.isArray(h.baseColorFactor)) {
         const d = h.baseColorFactor;
-        l.color.setRGB(d[0], d[1], d[2], N), l.opacity = d[3];
+        l.color.setRGB(d[0], d[1], d[2], O), l.opacity = d[3];
       }
       h.baseColorTexture !== void 0 && c.push(t.assignTexture(l, "map", h.baseColorTexture, $)), l.metalness = h.metallicFactor !== void 0 ? h.metallicFactor : 1, l.roughness = h.roughnessFactor !== void 0 ? h.roughnessFactor : 1, h.metallicRoughnessTexture !== void 0 && (c.push(t.assignTexture(l, "metalnessMap", h.metallicRoughnessTexture)), c.push(t.assignTexture(l, "roughnessMap", h.metallicRoughnessTexture))), o = this._invokeOne(function(d) {
         return d.getMaterialType && d.getMaterialType(e);
@@ -1791,7 +1791,7 @@ class Os {
     }
     if (i.occlusionTexture !== void 0 && o !== H && (c.push(t.assignTexture(l, "aoMap", i.occlusionTexture)), i.occlusionTexture.strength !== void 0 && (l.aoMapIntensity = i.occlusionTexture.strength)), i.emissiveFactor !== void 0 && o !== H) {
       const h = i.emissiveFactor;
-      l.emissive = new j().setRGB(h[0], h[1], h[2], N);
+      l.emissive = new j().setRGB(h[0], h[1], h[2], O);
     }
     return i.emissiveTexture !== void 0 && o !== H && c.push(t.assignTexture(l, "emissiveMap", i.emissiveTexture, $)), Promise.all(c).then(function() {
       const h = new o(l);
@@ -1861,9 +1861,9 @@ class Os {
         else if (m.mode === D.LINES)
           w = new Pt(_, R);
         else if (m.mode === D.LINE_STRIP)
-          w = new Ot(_, R);
-        else if (m.mode === D.LINE_LOOP)
           w = new Nt(_, R);
+        else if (m.mode === D.LINE_LOOP)
+          w = new Ot(_, R);
         else if (m.mode === D.POINTS)
           w = new It(_, R);
         else
@@ -2117,7 +2117,7 @@ class Os {
     }, e.createInterpolant.isInterpolantFactoryMethodGLTFCubicSpline = !0;
   }
 }
-function Ns(r, e, t) {
+function Os(r, e, t) {
   const s = e.attributes, n = new Kt();
   if (s.POSITION !== void 0) {
     const l = t.json.accessors[s.POSITION], a = l.min, c = l.max;
@@ -2175,7 +2175,7 @@ function ke(r, e, t) {
     });
     n.push(o);
   }
-  return Ae.workingColorSpace !== N && "COLOR_0" in s && console.warn(`THREE.GLTFLoader: Converting vertex colors from "srgb-linear" to "${Ae.workingColorSpace}" not supported.`), P(r, e), Ns(r, e, t), Promise.all(n).then(function() {
+  return Ae.workingColorSpace !== O && "COLOR_0" in s && console.warn(`THREE.GLTFLoader: Converting vertex colors from "srgb-linear" to "${Ae.workingColorSpace}" not supported.`), P(r, e), Os(r, e, t), Promise.all(n).then(function() {
     return e.targets !== void 0 ? Ls(r, e.targets, t) : r;
   });
 }
@@ -2416,7 +2416,7 @@ const W = {
     JOINT1: "pinky-finger-phalanx-proximal",
     JOINT2: "pinky-finger-phalanx-intermediate",
     JOINT3: "pinky-finger-phalanx-distal",
-    TOP: "pinky-finger-tip"
+    TIP: "pinky-finger-tip"
   }
 };
 class Hs {
@@ -3555,7 +3555,7 @@ function Pn(r = 0, e = 13, t = 256) {
   const n = new p.PlaneGeometry(Math.pow(2, e), Math.pow(2, e)), i = new p.MeshLambertMaterial({ map: s }), o = new p.Mesh(n, i);
   return o.position.set(0, r, 0), o.rotation.set(Math.PI / -2, 0, 0), o;
 }
-function On({ y: r = 0, size: e = 13, color: t = 1118481 } = {}) {
+function Nn({ y: r = 0, size: e = 13, color: t = 1118481 } = {}) {
   const s = new p.PlaneGeometry(Math.pow(2, e), Math.pow(2, e)), n = new p.MeshLambertMaterial({ color: t }), i = new p.Mesh(s, n);
   return i.position.set(0, r, 0), i.rotation.set(Math.PI / -2, 0, 0), i;
 }
@@ -3563,7 +3563,7 @@ function pe(r, e = 16711680) {
   const t = new p.LineBasicMaterial({ color: e }), s = new p.BufferGeometry().setFromPoints(r);
   return new p.Line(s, t);
 }
-function Nn() {
+function On() {
   const r = new p.Object3D(), e = pe([new p.Vector3(0, 0, 0), new p.Vector3(0, 10, 0)], 16711680), t = pe([new p.Vector3(0, 0, 0), new p.Vector3(10, 0, 0)], 65280), s = pe([new p.Vector3(0, 0, 0), new p.Vector3(0, 0, 10)], 255);
   return r.add(e), r.add(t), r.add(s), r;
 }
@@ -3606,11 +3606,11 @@ export {
   Be as XRRemote,
   en as XRRemoteEventType,
   Rn as XRWorld,
-  Nn as buildAxis,
+  On as buildAxis,
   Ln as clamp,
   Dn as createBox,
   Cn as createGridRoom,
-  On as createInfiniteColorPlane,
+  Nn as createInfiniteColorPlane,
   Pn as createInfinitePlane,
   vn as createSphere,
   pe as drawLine,
