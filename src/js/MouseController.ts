@@ -1,8 +1,9 @@
 import { Vector2 } from 'three';
 import { CustomEventCallback, CustomEventManager, CustomEventOptions } from './CustomEventManager';
 
-type Payload = { mouse: MouseController };
+type MouseControllerPayload = { mouse: MouseController };
 
+export type MouseControllerEvent = CustomEvent<MouseControllerPayload>;
 export class MouseController {
   element: HTMLElement;
   rect: DOMRect;
@@ -14,7 +15,7 @@ export class MouseController {
   up = { relative: new Vector2(), position: new Vector2() };
   isDown = false;
   isOver = false;
-  eventManager = new CustomEventManager<Payload>();
+  eventManager = new CustomEventManager<MouseControllerPayload>();
   initializedEvents: Record<string, boolean> = {};
   clientX = 0;
   clientY = 0;
@@ -49,41 +50,41 @@ export class MouseController {
     }
   }
 
-  on(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<Payload>, options: CustomEventOptions = {}) {
+  on(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<MouseControllerPayload>, options: CustomEventOptions = {}) {
     this.initEvent(eventType);
     this.eventManager.on(eventType, callback, options);
   }
 
-  off(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<Payload>) {
+  off(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<MouseControllerPayload>) {
     this.eventManager.off(eventType, callback);
   }
 
-  onEnter(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController {
+  onEnter(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController {
     this.on('enter', callback, options);
     return this;
   }
 
-  onLeave(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController {
+  onLeave(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController {
     this.on('leave', callback, options);
     return this;
   }
 
-  onDown(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController {
+  onDown(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController {
     this.on('down', callback, options);
     return this;
   }
 
-  onMove(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController {
+  onMove(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController {
     this.on('move', callback, options);
     return this;
   }
 
-  onUp(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController {
+  onUp(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController {
     this.on('up', callback, options);
     return this;
   }
 
-  onClick(callback: CustomEventCallback<Payload>, options: CustomEventOptions = {}): MouseController {
+  onClick(callback: CustomEventCallback<MouseControllerPayload>, options: CustomEventOptions = {}): MouseController {
     // Initialize down and up events so drag tracking works
     this.initEvent('down');
     this.initEvent('up');

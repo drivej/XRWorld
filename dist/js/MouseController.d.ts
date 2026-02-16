@@ -1,8 +1,9 @@
 import { Vector2 } from 'three';
 import { CustomEventCallback, CustomEventManager, CustomEventOptions } from './CustomEventManager';
-type Payload = {
+type MouseControllerPayload = {
     mouse: MouseController;
 };
+export type MouseControllerEvent = CustomEvent<MouseControllerPayload>;
 export declare class MouseController {
     element: HTMLElement;
     rect: DOMRect;
@@ -26,20 +27,20 @@ export declare class MouseController {
     };
     isDown: boolean;
     isOver: boolean;
-    eventManager: CustomEventManager<Payload>;
+    eventManager: CustomEventManager<MouseControllerPayload>;
     initializedEvents: Record<string, boolean>;
     clientX: number;
     clientY: number;
     constructor(element: HTMLElement);
     initEvent(eventType: string): void;
-    on(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<Payload>, options?: CustomEventOptions): void;
-    off(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<Payload>): void;
-    onEnter(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController;
-    onLeave(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController;
-    onDown(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController;
-    onMove(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController;
-    onUp(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController;
-    onClick(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController;
+    on(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): void;
+    off(eventType: 'up' | 'down' | 'move' | 'leave' | 'enter', callback: CustomEventCallback<MouseControllerPayload>): void;
+    onEnter(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController;
+    onLeave(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController;
+    onDown(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController;
+    onMove(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController;
+    onUp(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController;
+    onClick(callback: CustomEventCallback<MouseControllerPayload>, options?: CustomEventOptions): MouseController;
     onResize(): void;
     updatePointer(event: MouseEvent, updateClient?: boolean): void;
     _onPointerEnter(event: MouseEvent): void;
