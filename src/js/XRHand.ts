@@ -262,6 +262,25 @@ export class XRHand {
   getPart(key: string) {
     return this.controller.joints[key as XRHandJoint];
   }
+
+  getLinearVelocity(renderer: THREE.WebGLRenderer): THREE.Vector3 | null {
+    const frame = renderer.xr.getFrame();
+    if (!frame) return null;
+
+    const referenceSpace = renderer.xr.getReferenceSpace();
+    if (!referenceSpace) return null;
+
+    // Wrist is the most stable joint for velocity
+    const wrist = this.getPart(XRHandParts.WRIST);
+    if (!wrist) return null;
+
+    const pose = frame.getPose(wrist as unknown as XRSpace, referenceSpace);
+    if (!pose || !pose.linearVelocity) return null;
+
+    const v = pose.linearVelocity; // DOMPointReadOnly
+
+    return new THREE.Vector3(v.x, v.y, v.z);
+  }
 }
 
 export const XRHandParts = {

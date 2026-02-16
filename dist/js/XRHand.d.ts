@@ -54,6 +54,7 @@ export declare class XRHand {
     onSelectStart(): void;
     onSelectEnd(): void;
     getPart(key: string): THREE.XRJointSpace | undefined;
+    getLinearVelocity(renderer: THREE.WebGLRenderer): THREE.Vector3 | null;
 }
 export declare const XRHandParts: {
     WRIST: string;

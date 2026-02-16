@@ -1,5 +1,5 @@
 import * as p from "three";
-import { Vector2 as b, SphereGeometry as Xe, BoxGeometry as ht, MeshStandardMaterial as ye, InstancedMesh as We, DynamicDrawUsage as ut, Vector3 as S, Matrix4 as Z, TrianglesDrawMode as dt, TriangleFanDrawMode as fe, TriangleStripDrawMode as Ye, Loader as pt, LoaderUtils as Y, FileLoader as qe, MeshPhysicalMaterial as O, Color as j, LinearSRGBColorSpace as N, SRGBColorSpace as J, SpotLight as ft, PointLight as mt, DirectionalLight as gt, Quaternion as ee, InstancedBufferAttribute as wt, Object3D as se, TextureLoader as _t, ImageBitmapLoader as yt, BufferAttribute as oe, InterleavedBuffer as xt, InterleavedBufferAttribute as Tt, LinearMipmapLinearFilter as Ze, NearestMipmapLinearFilter as bt, LinearMipmapNearestFilter as Et, NearestMipmapNearestFilter as Mt, LinearFilter as me, NearestFilter as Je, RepeatWrapping as ge, MirroredRepeatWrapping as Rt, ClampToEdgeWrapping as At, PointsMaterial as St, Material as re, LineBasicMaterial as Lt, DoubleSide as vt, MeshBasicMaterial as H, PropertyBinding as Dt, BufferGeometry as $e, SkinnedMesh as Ct, Mesh as Qe, LineSegments as Pt, Line as Ot, LineLoop as Nt, Points as It, Group as ae, PerspectiveCamera as kt, MathUtils as et, OrthographicCamera as Ft, Skeleton as jt, AnimationClip as Ut, Bone as Ht, InterpolateDiscrete as Bt, InterpolateLinear as tt, Texture as be, VectorKeyframeTrack as Ee, NumberKeyframeTrack as Me, QuaternionKeyframeTrack as Re, ColorManagement as Ae, FrontSide as Gt, Interpolant as Vt, Box3 as Kt, Sphere as zt, Controls as Xt, MOUSE as G, TOUCH as B, Spherical as Se, Ray as Wt, Plane as Yt, Float32BufferAttribute as qt } from "three";
+import { Vector2 as b, SphereGeometry as Xe, BoxGeometry as ht, MeshStandardMaterial as ye, InstancedMesh as We, DynamicDrawUsage as ut, Vector3 as S, Matrix4 as J, TrianglesDrawMode as dt, TriangleFanDrawMode as fe, TriangleStripDrawMode as Ye, Loader as pt, LoaderUtils as q, FileLoader as qe, MeshPhysicalMaterial as O, Color as j, LinearSRGBColorSpace as N, SRGBColorSpace as $, SpotLight as ft, PointLight as mt, DirectionalLight as gt, Quaternion as ee, InstancedBufferAttribute as wt, Object3D as se, TextureLoader as _t, ImageBitmapLoader as yt, BufferAttribute as oe, InterleavedBuffer as xt, InterleavedBufferAttribute as Tt, LinearMipmapLinearFilter as Ze, NearestMipmapLinearFilter as bt, LinearMipmapNearestFilter as Et, NearestMipmapNearestFilter as Mt, LinearFilter as me, NearestFilter as Je, RepeatWrapping as ge, MirroredRepeatWrapping as Rt, ClampToEdgeWrapping as At, PointsMaterial as St, Material as re, LineBasicMaterial as Lt, DoubleSide as vt, MeshBasicMaterial as H, PropertyBinding as Dt, BufferGeometry as $e, SkinnedMesh as Ct, Mesh as Qe, LineSegments as Pt, Line as Ot, LineLoop as Nt, Points as It, Group as ae, PerspectiveCamera as kt, MathUtils as et, OrthographicCamera as Ft, Skeleton as jt, AnimationClip as Ut, Bone as Ht, InterpolateDiscrete as Bt, InterpolateLinear as tt, Texture as be, VectorKeyframeTrack as Ee, NumberKeyframeTrack as Me, QuaternionKeyframeTrack as Re, ColorManagement as Ae, FrontSide as Gt, Interpolant as Vt, Box3 as Kt, Sphere as zt, Controls as Xt, MOUSE as G, TOUCH as B, Spherical as Se, Ray as Wt, Plane as Yt, Float32BufferAttribute as qt } from "three";
 import xe from "gsap";
 class K {
   /**
@@ -412,7 +412,7 @@ class es {
       ), this.currentTargets.enter = void 0);
   }
 }
-const ve = new Z(), De = new S();
+const ve = new J(), De = new S();
 class Ce {
   /**
    * Constructs a new XR hand primitive model.
@@ -554,10 +554,10 @@ class nt extends pt {
     if (this.resourcePath !== "")
       o = this.resourcePath;
     else if (this.path !== "") {
-      const c = Y.extractUrlBase(e);
-      o = Y.resolveURL(c, this.path);
+      const c = q.extractUrlBase(e);
+      o = q.resolveURL(c, this.path);
     } else
-      o = Y.extractUrlBase(e);
+      o = q.extractUrlBase(e);
     this.manager.itemStart(e);
     const l = function(c) {
       n ? n(c) : console.error(c), i.manager.itemError(e), i.manager.itemEnd(e);
@@ -805,7 +805,7 @@ class ns {
         const o = i.baseColorFactor;
         e.color.setRGB(o[0], o[1], o[2], N), e.opacity = o[3];
       }
-      i.baseColorTexture !== void 0 && n.push(s.assignTexture(e, "map", i.baseColorTexture, J));
+      i.baseColorTexture !== void 0 && n.push(s.assignTexture(e, "map", i.baseColorTexture, $));
     }
     return Promise.all(n);
   }
@@ -893,7 +893,7 @@ class ls {
       const l = o.sheenColorFactor;
       t.sheenColor.setRGB(l[0], l[1], l[2], N);
     }
-    return o.sheenRoughnessFactor !== void 0 && (t.sheenRoughness = o.sheenRoughnessFactor), o.sheenColorTexture !== void 0 && i.push(s.assignTexture(t, "sheenColorMap", o.sheenColorTexture, J)), o.sheenRoughnessTexture !== void 0 && i.push(s.assignTexture(t, "sheenRoughnessMap", o.sheenRoughnessTexture)), Promise.all(i);
+    return o.sheenRoughnessFactor !== void 0 && (t.sheenRoughness = o.sheenRoughnessFactor), o.sheenColorTexture !== void 0 && i.push(s.assignTexture(t, "sheenColorMap", o.sheenColorTexture, $)), o.sheenRoughnessTexture !== void 0 && i.push(s.assignTexture(t, "sheenRoughnessMap", o.sheenRoughnessTexture)), Promise.all(i);
   }
 }
 class cs {
@@ -961,7 +961,7 @@ class ds {
     const i = [], o = n.extensions[this.name];
     t.specularIntensity = o.specularFactor !== void 0 ? o.specularFactor : 1, o.specularTexture !== void 0 && i.push(s.assignTexture(t, "specularIntensityMap", o.specularTexture));
     const l = o.specularColorFactor || [1, 1, 1];
-    return t.specularColor = new j().setRGB(l[0], l[1], l[2], N), o.specularColorTexture !== void 0 && i.push(s.assignTexture(t, "specularColorMap", o.specularColorTexture, J)), Promise.all(i);
+    return t.specularColor = new j().setRGB(l[0], l[1], l[2], N), o.specularColorTexture !== void 0 && i.push(s.assignTexture(t, "specularColorMap", o.specularColorTexture, $)), Promise.all(i);
   }
 }
 class ps {
@@ -1091,7 +1091,7 @@ class ys {
     return l.length < 1 ? null : (l.push(this.parser.createNodeMesh(e)), Promise.all(l).then((c) => {
       const u = c.pop(), h = u.isGroup ? u.children : [u], d = c[0].count, f = [];
       for (const g of h) {
-        const _ = new Z(), m = new S(), w = new ee(), R = new S(1, 1, 1), E = new We(g.geometry, g.material, d);
+        const _ = new J(), m = new S(), w = new ee(), R = new S(1, 1, 1), E = new We(g.geometry, g.material, d);
         for (let T = 0; T < d; T++)
           a.TRANSLATION && m.fromBufferAttribute(a.TRANSLATION, T), a.ROTATION && w.fromBufferAttribute(a.ROTATION, T), a.SCALE && R.fromBufferAttribute(a.SCALE, T), E.setMatrixAt(T, _.compose(m, w, R));
         for (const T in a)
@@ -1365,7 +1365,7 @@ function _e(r) {
 function Cs(r) {
   return r.search(/\.jpe?g($|\?)/i) > 0 || r.search(/^data\:image\/jpeg/) === 0 ? "image/jpeg" : r.search(/\.webp($|\?)/i) > 0 || r.search(/^data\:image\/webp/) === 0 ? "image/webp" : r.search(/\.ktx2($|\?)/i) > 0 || r.search(/^data\:image\/ktx2/) === 0 ? "image/ktx2" : "image/png";
 }
-const Ps = new Z();
+const Ps = new J();
 class Os {
   constructor(e = {}, t = {}) {
     this.json = e, this.extensions = {}, this.plugins = {}, this.options = t, this.cache = new ts(), this.associations = /* @__PURE__ */ new Map(), this.primitiveCache = {}, this.nodeCache = {}, this.meshCache = { refs: {}, uses: {} }, this.cameraCache = { refs: {}, uses: {} }, this.lightCache = { refs: {}, uses: {} }, this.sourceCache = {}, this.textureCache = {}, this.nodeNamesUsed = {};
@@ -1587,7 +1587,7 @@ class Os {
       return Promise.resolve(this.extensions[y.KHR_BINARY_GLTF].body);
     const n = this.options;
     return new Promise(function(i, o) {
-      s.load(Y.resolveURL(t.uri, n.path), i, void 0, function() {
+      s.load(q.resolveURL(t.uri, n.path), i, void 0, function() {
         o(new Error('THREE.GLTFLoader: Failed to load buffer "' + t.uri + '".'));
       });
     });
@@ -1690,7 +1690,7 @@ class Os {
         t.isImageBitmapLoader === !0 && (g = function(_) {
           const m = new be(_);
           m.needsUpdate = !0, d(m);
-        }), t.load(Y.resolveURL(h, i.path), g, void 0, f);
+        }), t.load(q.resolveURL(h, i.path), g, void 0, f);
       });
     }).then(function(h) {
       return c === !0 && l.revokeObjectURL(a), P(h, o), h.userData.mimeType = o.mimeType || Cs(o.uri), h;
@@ -1777,7 +1777,7 @@ class Os {
         const d = h.baseColorFactor;
         l.color.setRGB(d[0], d[1], d[2], N), l.opacity = d[3];
       }
-      h.baseColorTexture !== void 0 && c.push(t.assignTexture(l, "map", h.baseColorTexture, J)), l.metalness = h.metallicFactor !== void 0 ? h.metallicFactor : 1, l.roughness = h.roughnessFactor !== void 0 ? h.roughnessFactor : 1, h.metallicRoughnessTexture !== void 0 && (c.push(t.assignTexture(l, "metalnessMap", h.metallicRoughnessTexture)), c.push(t.assignTexture(l, "roughnessMap", h.metallicRoughnessTexture))), o = this._invokeOne(function(d) {
+      h.baseColorTexture !== void 0 && c.push(t.assignTexture(l, "map", h.baseColorTexture, $)), l.metalness = h.metallicFactor !== void 0 ? h.metallicFactor : 1, l.roughness = h.roughnessFactor !== void 0 ? h.roughnessFactor : 1, h.metallicRoughnessTexture !== void 0 && (c.push(t.assignTexture(l, "metalnessMap", h.metallicRoughnessTexture)), c.push(t.assignTexture(l, "roughnessMap", h.metallicRoughnessTexture))), o = this._invokeOne(function(d) {
         return d.getMaterialType && d.getMaterialType(e);
       }), c.push(Promise.all(this._invokeAll(function(d) {
         return d.extendMaterialParams && d.extendMaterialParams(e, l);
@@ -1793,7 +1793,7 @@ class Os {
       const h = i.emissiveFactor;
       l.emissive = new j().setRGB(h[0], h[1], h[2], N);
     }
-    return i.emissiveTexture !== void 0 && o !== H && c.push(t.assignTexture(l, "emissiveMap", i.emissiveTexture, J)), Promise.all(c).then(function() {
+    return i.emissiveTexture !== void 0 && o !== H && c.push(t.assignTexture(l, "emissiveMap", i.emissiveTexture, $)), Promise.all(c).then(function() {
       const h = new o(l);
       return i.name && (h.name = i.name), P(h, i), t.associations.set(h, { materials: e }), i.extensions && F(n, h, i), h;
     });
@@ -1917,7 +1917,7 @@ class Os {
         const h = o[c];
         if (h) {
           l.push(h);
-          const d = new Z();
+          const d = new J();
           i !== null && d.fromArray(i.array, c * 16), a.push(d);
         } else
           console.warn('THREE.GLTFLoader: Joint "%s" could not be found.', t.joints[c]);
@@ -2017,7 +2017,7 @@ class Os {
         for (let h = 0, d = c.length; h < d; h++)
           u.add(c[h]);
       if (i.name && (u.userData.name = i.name, u.name = o), P(u, i), i.extensions && F(s, u, i), i.matrix !== void 0) {
-        const h = new Z();
+        const h = new J();
         h.fromArray(i.matrix), u.applyMatrix4(h);
       } else
         i.translation !== void 0 && u.position.fromArray(i.translation), i.rotation !== void 0 && u.quaternion.fromArray(i.rotation), i.scale !== void 0 && u.scale.fromArray(i.scale);
@@ -2315,7 +2315,7 @@ class je {
     }
   }
   getSelectedObject(e) {
-    const t = this.getPart($.INDEX.JOINT1);
+    const t = this.getPart(W.INDEX.JOINT1);
     if (t) {
       Fe.identity().extractRotation(t.matrixWorld), this.raycaster.ray.origin.setFromMatrixPosition(t.matrixWorld), this.raycaster.ray.direction.set(0, 0, -1).applyMatrix4(Fe);
       let s = e.children.length, n, i;
@@ -2336,7 +2336,7 @@ class je {
     return null;
   }
   onConnected(e) {
-    Object.keys(this.controller?.joints ?? {}).length > 5 && (console.log("hand", this.controllerIndex, "connected"), this.connected = !0, this.controller.addEventListener("selectstart", this.onSelectStart), this.controller.addEventListener("selectend", this.onSelectEnd), this.controller.addEventListener("move", this._onMove), this.controller.userData.built === !1 && (console.log("joints", Object.keys(this.controller.joints)), $.INDEX.JOINT1 in this.controller.joints && (this.getPart($.INDEX.JOINT1)?.add(this.buildController(e.data)), this.controller.userData.built = !0, this.lastPosition.copy(this.controller.position))));
+    Object.keys(this.controller?.joints ?? {}).length > 5 && (console.log("hand", this.controllerIndex, "connected"), this.connected = !0, this.controller.addEventListener("selectstart", this.onSelectStart), this.controller.addEventListener("selectend", this.onSelectEnd), this.controller.addEventListener("move", this._onMove), this.controller.userData.built === !1 && (console.log("joints", Object.keys(this.controller.joints)), W.INDEX.JOINT1 in this.controller.joints && (this.getPart(W.INDEX.JOINT1)?.add(this.buildController(e.data)), this.controller.userData.built = !0, this.lastPosition.copy(this.controller.position))));
   }
   onDisconnected(e) {
     this.connected = !1, this.controller.removeEventListener("selectstart", this.onSelectStart), this.controller.removeEventListener("selectend", this.onSelectEnd), this.controller.removeEventListener("move", this._onMove), console.log("hand", this.controllerIndex, "disconnected");
@@ -2361,7 +2361,7 @@ class je {
     }
   }
   onSelectStart() {
-    this.controller.userData.selectPosition = this.getPart($.INDEX.TIP)?.position.clone(), this.controller.userData.selectVelocity = new p.Vector3(), this.isSelecting = !0;
+    this.controller.userData.selectPosition = this.getPart(W.INDEX.TIP)?.position.clone(), this.controller.userData.selectVelocity = new p.Vector3(), this.isSelecting = !0;
   }
   onSelectEnd() {
     this.isSelecting = !1;
@@ -2369,8 +2369,20 @@ class je {
   getPart(e) {
     return this.controller.joints[e];
   }
+  getLinearVelocity(e) {
+    const t = e.xr.getFrame();
+    if (!t) return null;
+    const s = e.xr.getReferenceSpace();
+    if (!s) return null;
+    const n = this.getPart(W.WRIST);
+    if (!n) return null;
+    const i = t.getPose(n, s);
+    if (!i || !i.linearVelocity) return null;
+    const o = i.linearVelocity;
+    return new p.Vector3(o.x, o.y, o.z);
+  }
 }
-const $ = {
+const W = {
   WRIST: "wrist",
   THUMB: {
     KNUCKLE: "thumb-metacarpal",
@@ -3430,7 +3442,7 @@ class gn extends $e {
     this.setAttribute("position", new qt(f, 3));
   }
 }
-const W = {
+const Y = {
   transparent: "transparent",
   white: "#fff",
   black: "#000",
@@ -3474,7 +3486,7 @@ var An = Math.PI / 180;
 function Sn(r, e, t) {
   return r + (e - r) * t;
 }
-function q(r, e, t = !1) {
+function Z(r, e, t = !1) {
   e || (e = r, r = 0);
   let s = r + Math.random() * (e - r);
   return t ? s + 0.5 | 0 : s;
@@ -3485,11 +3497,11 @@ function Ln(r, e, t) {
 function lt() {
   return Math.random() * 16777215;
 }
-function vn({ radius: r = q(0.1, 0.3), color: e = lt(), position: t = [0, 0, 0], opacity: s = 1 } = {}) {
+function vn({ radius: r = Z(0.1, 0.3), color: e = lt(), position: t = [0, 0, 0], opacity: s = 1 } = {}) {
   const n = new p.SphereGeometry(r, 32, 32), i = new p.MeshLambertMaterial({ color: e, opacity: s, transparent: s < 1 }), o = new p.Mesh(n, i);
   return o.position.fromArray(t), o.userData.color = i.color.getHex(), o.userData.physics = !1, o.userData.selectable = !1, o.userData.velocity = new p.Vector3(), o;
 }
-function Dn({ radius: r = q(0.1, 0.5), color: e = lt(), position: t = [0, 0, 0], opacity: s = 1 } = {}) {
+function Dn({ radius: r = Z(0.1, 0.5), color: e = lt(), position: t = [0, 0, 0], opacity: s = 1 } = {}) {
   const n = r, i = new p.BoxGeometry(n, n, n), o = new p.MeshStandardMaterial({
     color: e,
     roughness: 1,
@@ -3515,20 +3527,20 @@ function wn() {
     // ThemeColors.purple,
     // ThemeColors.red,
     // ThemeColors.orange,
-    W.yellow
+    Y.yellow
   ], t = document.createElement("canvas"), s = t.getContext("2d");
   s.canvas.width = r.width, s.canvas.height = r.height, s.fillStyle = "#000", s.fillRect(0, 0, s.canvas.width, s.canvas.height), s.fillStyle = "#FFF";
   let n = ~~(r.cells.length * 0.5);
   for (; n--; ) {
-    s.globalAlpha = Math.random() * 0.01, s.fillStyle = e[q(0, e.length - 1, !0)];
+    s.globalAlpha = Math.random() * 0.01, s.fillStyle = e[Z(0, e.length - 1, !0)];
     const i = r.getRandomCell(
       (o) => !o.data.active,
       (o) => o.data.active = !0
     );
     i && s.fillRect(i.x, i.y, i.width, i.height);
   }
-  for (n = ~~(r.cells.length * 0.01), s.fillStyle = [W.pink, W.purple][q(0, 1, !0)]; n--; ) {
-    s.globalAlpha = Math.random() * 0.1, s.fillStyle = [W.pink, W.purple][q(0, 1, !0)];
+  for (n = ~~(r.cells.length * 0.01), s.fillStyle = [Y.pink, Y.purple][Z(0, 1, !0)]; n--; ) {
+    s.globalAlpha = Math.random() * 0.1, s.fillStyle = [Y.pink, Y.purple][Z(0, 1, !0)];
     const i = r.getRandomCell(
       (o) => !o.data.active,
       (o) => o.data.active = !0
@@ -3584,12 +3596,12 @@ export {
   En as KeyController,
   $t as KeyboardKeys,
   Mn as MouseController,
-  W as ThemeColors,
+  Y as ThemeColors,
   K as VRButton,
   Qt as XRBackground,
   es as XREventManager,
   je as XRHand,
-  $ as XRHandParts,
+  W as XRHandParts,
   Hs as XRMouse,
   Be as XRRemote,
   en as XRRemoteEventType,
@@ -3610,7 +3622,7 @@ export {
   kn as lookAtObjectInstant,
   _n as lookAtPoint,
   An as rad,
-  q as rand,
+  Z as rand,
   lt as randomColor
 };
 //# sourceMappingURL=index.js.map
