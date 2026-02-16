@@ -39,6 +39,7 @@ export declare class MouseController {
     onDown(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController;
     onMove(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController;
     onUp(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController;
+    dummyCallback(): void;
     onClick(callback: CustomEventCallback<Payload>, options?: CustomEventOptions): MouseController;
     onResize(): void;
     updatePointer(event: MouseEvent, updateClient?: boolean): void;
