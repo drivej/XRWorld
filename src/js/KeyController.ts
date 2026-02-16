@@ -15,7 +15,7 @@ interface KeyboardKeyInfo {
   userData: Record<string, any>;
 }
 
-type Payload = { keyboard: KeyController; key: string };
+export type KeyboardControllerPayload = { keyboard: KeyController; key: string };
 
 export class KeyController {
   status: Record<KeyboardKeys | string, KeyboardKeyInfo> = {
@@ -25,7 +25,7 @@ export class KeyController {
     [KeyboardKeys.ArrowRight]: { isDown: false, userData: { axis: new THREE.Vector3(0, 1, 0), angle: degToRad(-90) } }
   };
   arrowIsDown = false;
-  eventManager = new CustomEventManager<Payload>();
+  eventManager = new CustomEventManager<KeyboardControllerPayload>();
 
   constructor() {
     document.addEventListener('keydown', this._onKeyDown.bind(this));
@@ -38,17 +38,17 @@ export class KeyController {
     }
   }
 
-  on(eventType: 'up' | 'down', callback: CustomEventCallback<Payload>, options: CustomEventOptions = {}): KeyController {
+  on(eventType: 'up' | 'down', callback: CustomEventCallback<KeyboardControllerPayload>, options: CustomEventOptions = {}): KeyController {
     this.eventManager.on(eventType, callback, options);
     return this;
   }
 
-  off(eventType: 'up' | 'down', callback: CustomEventCallback<Payload>): KeyController {
+  off(eventType: 'up' | 'down', callback: CustomEventCallback<KeyboardControllerPayload>): KeyController {
     this.eventManager.off(eventType, callback);
     return this;
   }
 
-  onPress(key: KeyboardKeys | string, callback: CustomEventCallback<Payload>, options?: CustomEventOptions): KeyController {
+  onPress(key: KeyboardKeys | string, callback: CustomEventCallback<KeyboardControllerPayload>, options?: CustomEventOptions): KeyController {
     this.on(
       'down',
       (e) => {
@@ -61,7 +61,7 @@ export class KeyController {
     return this;
   }
 
-  onRelease(key: KeyboardKeys | string, callback: CustomEventCallback<Payload>, options?: CustomEventOptions): KeyController {
+  onRelease(key: KeyboardKeys | string, callback: CustomEventCallback<KeyboardControllerPayload>, options?: CustomEventOptions): KeyController {
     this.on(
       'up',
       (e) => {

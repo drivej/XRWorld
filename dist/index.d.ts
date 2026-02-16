@@ -1,6 +1,7 @@
 export { VRButton } from 'three/examples/jsm/webxr/VRButton';
 export { Grid } from './js/Grid';
 export { KeyboardKeys, KeyController } from './js/KeyController';
+export type { KeyboardControllerPayload } from './js/KeyController';
 export { MouseController } from './js/MouseController';
 export type { MouseControllerEvent } from './js/MouseController';
 export { XRBackground } from './js/XRBackground';
